@@ -55,15 +55,6 @@ window.onload = () => {
         if(cartas_geradas.length >= 24)
         {
 
-            /*for(var i = 0; i < 24; i++)
-            {
-
-                console.log(cartas_geradas[i]);
-
-            }
-
-            console.log("\n");*/
-
             clearInterval(gerar_cartas_aleatoriamente);
 
         }
