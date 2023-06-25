@@ -23,23 +23,52 @@ body {
 
 }
 
-/*video {
+#video-box {
 
     height: 100%;
     width: 100%;
-
-}*/
-
-img {
-
-    height: 45%;
-    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
 
 }
 
-a {
+#video-box button {
 
+    height: 200px;
+    width: 200px;
     position: absolute;
+    background-color: #00007D;
+    border: 5px solid #FFFFFF;
+    border-radius: 10px;
+    background-image: url("../Images/Play.png");
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+#link-box {
+
+    /*height: 40%;
+    width: 30%;*/
+    height: 325px;
+    width: 325px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    background-image: url("../Images/Bola.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 1s;
+
+}
+
+#link-box a {
+
     color: #0000FF;
     text-decoration: none;cursor: pointer;
     margin-top: 20px;
@@ -47,14 +76,14 @@ a {
 
 }
 
-a:hover {
+#link-box a:hover {
 
     font-size: 20px;
     color: #FFFF00;
 
 }
 
-a:active {
+#link-box a:active {
 
     color: #FF0000;
 
