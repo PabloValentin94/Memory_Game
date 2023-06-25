@@ -219,8 +219,6 @@ function verificar_vitoria()
         setTimeout(() => {
 
             alert("Fim de Jogo! O jogo será reiniciado.");
-
-            document.querySelector(".card").classList.remove("reveal_card");
     
             window.location.reload(true);
 
