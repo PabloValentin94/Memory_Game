@@ -111,7 +111,6 @@ body {
     100% {
 
         transform: rotateY(180deg);
-        background-image: url("../Images/Card.jpg");
 
     }
 
