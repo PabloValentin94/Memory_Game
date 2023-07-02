@@ -18,7 +18,7 @@ function iniciar_video()
         
             document.getElementById("link-box").style.display = "flex";
         
-        }, 92000);
+        }, 95000);
     
     }
 

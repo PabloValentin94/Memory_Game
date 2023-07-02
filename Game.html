@@ -12,11 +12,17 @@
 
         <script defer type="text/javascript" src="./Assets/JS/Game.js"></script>
 
-        <title> Game </title>
+        <title> (00:00:00) Game </title>
 
     </head>
 
-    <body>
+    <body oncontextmenu="return false">
+
+        <div id="initialization">
+
+            <button onclick="iniciar_jogo()">  </button>
+
+        </div>
 
         <div id="container">
 
@@ -56,6 +62,24 @@
                 <div class="card" id="21" onclick="revelar_carta('21')"></div>
                 <div class="card" id="22" onclick="revelar_carta('22')"></div>
                 <div class="card" id="23" onclick="revelar_carta('23')"></div>
+
+            </div>
+
+        </div>
+
+        <div id="time_banner">
+
+            <div>
+
+                <p> <span style="font-size: 30px; font-weight: bolder;"> Seu Tempo foi de: </span> </p>
+
+                <p> <span id="horas" style="color: #00007D;">  </span> hora(s) </p>
+
+                <p> <span id="minutos" style="color: #00007D;">  </span> minuto(s) </p>
+
+                <p> <span id="segundos" style="color: #00007D;">  </span> segundo(s) </p>
+
+                <button onclick="window.location.reload(true);"> Recarregar Jogo </button>
 
             </div>
 

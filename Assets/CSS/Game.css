@@ -16,6 +16,34 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #FAEBD7;
+
+}
+
+#initialization {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+
+}
+
+#initialization button {
+
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    background-color: #00007D;
+    border: 5px solid #000000;
+    border-radius: 10px;
+    background-image: url("../Images/Play.png");
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
 
 }
 
@@ -23,11 +51,11 @@ body {
 
     height: 100%;
     width: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: #FAEBD7;
+    background-color: transparent;
 
 }
 
@@ -55,13 +83,6 @@ body {
 
 }
 
-/*.card:hover {
-
-    background-color: #00007D;
-    background-image: none;
-
-}*/
-
 .reveal_card {
 
     /*animation-name: reveal_card;
@@ -79,6 +100,52 @@ body {
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;*/
     animation: hidden_card 0.75s 1 ease-in-out;
+
+}
+
+#time_banner {
+
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+
+}
+
+#time_banner div {
+
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #FFFFFF;
+    border: 5px solid #000000;
+    border-radius: 10px;
+
+}
+
+#time_banner div p {
+
+    font-size: 25px;
+    font-weight: bold;
+    color: #000000;
+    cursor: text;
+
+}
+
+#time_banner div button {
+
+    background-color: #00007D;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #FFFFFF;
+    padding: 10px;
+    cursor: pointer;
 
 }
 

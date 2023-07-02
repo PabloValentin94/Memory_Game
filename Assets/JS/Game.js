@@ -15,6 +15,16 @@ const cartas = [
 
 ];
 
+// Variáveis do Cronômetro:
+
+var horas = 0;
+
+var minutos = 0;
+
+var segundos = 0;
+
+// Variáveis do Jogo:
+
 var cartas_geradas = [];
 
 var quantidade_vezes_carta_gerada = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -62,6 +72,74 @@ window.onload = () => {
     }, 10);
 
 };
+
+
+function iniciar_jogo()
+{
+
+    const cronometro = setInterval(() => {
+
+        segundos++;
+
+        if(segundos == 60)
+        {
+
+            minutos ++;
+
+            segundos = 0;
+
+        }
+
+        if(minutos == 60)
+        {
+
+            horas++;
+
+            minutos = 0;
+
+        }
+
+        const h = verificar_digitos(horas.toString());
+
+        const min = verificar_digitos(minutos.toString());
+
+        const seg = verificar_digitos(segundos.toString());
+
+        document.title = "(" + h + ":" + min + ":" + seg + ") Game";
+
+        if(cartas_encontradas.length == 12)
+        {
+
+            clearInterval(cronometro);
+
+        }
+
+    }, 1000);
+
+    document.getElementById("initialization").style.display = "none";
+
+    document.getElementById("container").style.display = "flex";
+
+}
+
+function verificar_digitos(numero)
+{
+
+    if(numero.length == 1)
+    {
+
+        return "0" + numero;
+
+    }
+
+    else
+    {
+
+        return numero;
+
+    }
+
+}
 
 function revelar_carta(id)
 {
@@ -150,14 +228,7 @@ function verificar_cartas_escolhidas()
 
             cartas_encontradas.push(par_encontrado);
 
-            /*for(var i = 0; i < cartas_encontradas.length; i++)
-            {
-
-                console.log(cartas_encontradas[i]);
-
-            }*/
-
-            alert("Encontrou um par de cartas!");
+            //alert("Encontrou um par de cartas!");
 
             id_primeira_carta_escolhida = "";
 
@@ -218,9 +289,17 @@ function verificar_vitoria()
 
         setTimeout(() => {
 
-            alert("Fim de Jogo! O jogo será reiniciado.");
-    
-            window.location.reload(true);
+            //alert("Fim de Jogo! O jogo será reiniciado.");
+
+            document.getElementById("container").style.display = "none";
+
+            document.getElementById("horas").innerText = verificar_digitos(horas.toString());
+
+            document.getElementById("minutos").innerText = verificar_digitos(minutos.toString());
+
+            document.getElementById("segundos").innerText = verificar_digitos(segundos.toString());
+
+            document.getElementById("time_banner").style.display = "flex";
 
         }, 1000);
 
