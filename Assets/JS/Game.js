@@ -23,11 +23,15 @@ var minutos = 0;
 
 var segundos = 0;
 
-// Variáveis do Jogo:
+// Variáveis do Jogo - Armazenamento:
+
+var quantidade_vezes_carta_gerada = [0,0,0,0,0,0,0,0,0,0,0,0];
 
 var cartas_geradas = [];
 
-var quantidade_vezes_carta_gerada = [0,0,0,0,0,0,0,0,0,0,0,0];
+var cartas_encontradas = [];
+
+// Variáveis do Jogo - Controle:
 
 var id_primeira_carta_escolhida = "";
 
@@ -36,8 +40,6 @@ var id_segunda_carta_escolhida = "";
 var primeira_carta_escolhida = "";
 
 var segunda_carta_escolhida = "";
-
-var cartas_encontradas = [];
 
 window.onload = () => {
 
@@ -245,23 +247,27 @@ function verificar_cartas_escolhidas()
         else if(primeira_carta_escolhida != segunda_carta_escolhida)
         {
 
-            document.getElementById(id_primeira_carta_escolhida).classList.remove("reveal_card");
+            const primeira_carta = document.getElementById(id_primeira_carta_escolhida);
 
-            document.getElementById(id_primeira_carta_escolhida).classList.add("hidden_card");
+            const segunda_carta = document.getElementById(id_segunda_carta_escolhida);
 
-            document.getElementById(id_segunda_carta_escolhida).classList.remove("reveal_card");
+            primeira_carta.classList.remove("reveal_card");
 
-            document.getElementById(id_segunda_carta_escolhida).classList.add("hidden_card");
+            primeira_carta.classList.add("hidden_card");
+
+            segunda_carta.classList.remove("reveal_card");
+
+            segunda_carta.classList.add("hidden_card");
 
             setTimeout(() => {
 
-                document.getElementById(id_primeira_carta_escolhida).classList.remove("hidden_card");
+                primeira_carta.classList.remove("hidden_card");
 
-                document.getElementById(id_primeira_carta_escolhida).style = "background-image: url('./Assets/Images/Card.jpg');";
+                primeira_carta.style = "background-image: url('./Assets/Images/Card.jpg');";
 
-                document.getElementById(id_segunda_carta_escolhida).classList.remove("hidden_card");
+                segunda_carta.classList.remove("hidden_card");
 
-                document.getElementById(id_segunda_carta_escolhida).style = "background-image: url('./Assets/Images/Card.jpg');";
+                segunda_carta.style = "background-image: url('./Assets/Images/Card.jpg');";
 
                 id_primeira_carta_escolhida = "";
 
