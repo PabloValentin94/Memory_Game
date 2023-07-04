@@ -24,6 +24,17 @@ body {
 
 }
 
+#container {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+
+}
+
 #video-box {
 
     height: 100%;
@@ -61,7 +72,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    background-image: url("../Images/Bola.png");
+    background-image: url("../Images/Index_Ball.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;

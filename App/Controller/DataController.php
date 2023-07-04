@@ -9,7 +9,7 @@ use Exception;
 class DataController extends Controller
 {
 
-    public static function Load(string $option) : void
+    public static function LoadPage(string $option) : void
     {
 
         try
@@ -98,7 +98,49 @@ class DataController extends Controller
         try
         {
 
-            
+            $model = new DataModel();
+
+            $model->id = (int) $_SESSION["id_usuario"];
+
+            $model->nome_jogador = $_SESSION["jogador"];
+
+            $model->nome_usuario = $_SESSION["usuario"];
+
+            $model->senha = $_SESSION["senha"];
+
+            $model->recorde = $_POST["recorde"];
+
+            $model->Save();
+
+            header("Location: /form");
+
+        }
+
+        catch(Exception $ex)
+        {
+
+            exit($ex);
+
+        }
+
+    }
+
+    public static function GenerateJSON() : void
+    {
+
+        try
+        {
+
+            $model = new DataModel();
+
+            $model->GetData();
+
+            if($model->dados)
+            {
+
+                parent::SendReturnAsJSON($model->dados);
+
+            }
 
         }
 

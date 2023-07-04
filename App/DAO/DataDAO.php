@@ -18,7 +18,7 @@ class DataDAO extends DAO
     {
 
         $sql = "INSERT INTO Player(nome_jogador, nome_usuario, " .
-               "senha) VALUES(?, ?, md5(?))";
+               "senha, recorde) VALUES(?, ?, md5(?), ?)";
 
         $stmt = $this->conexao->prepare($sql);
 
@@ -27,6 +27,8 @@ class DataDAO extends DAO
         $stmt->bindValue(2, $model->nome_usuario);
 
         $stmt->bindValue(3, $model->senha);
+
+        $stmt->bindValue(4, $model->recorde);
 
         return $stmt->execute();
 
@@ -70,7 +72,7 @@ class DataDAO extends DAO
     public function Select() : array
     {
 
-        $sql = "SELECT * FROM Player ORDER BY recorde DESC";
+        $sql = "SELECT * FROM Player ORDER BY recorde ASC, nome_usuario ASC";
 
         $stmt = $this->conexao->prepare($sql);
 
@@ -86,7 +88,7 @@ class DataDAO extends DAO
         $parametro = [":filtro" => "%" . $valor . "%"];
 
         $sql = "SELECT * FROM Player WHERE nome_usuario " .
-               "LIKE :filtro ORDER BY recorde DESC";
+               "LIKE :filtro ORDER BY recorde ASC";
 
         $stmt = $this->conexao->prepare($sql);
 

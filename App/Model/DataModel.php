@@ -4,8 +4,6 @@ namespace App\Model;
 
 use App\DAO\DataDAO;
 
-use Exception;
-
 class DataModel extends Model
 {
 

@@ -8,11 +8,11 @@ switch($url)
 {
 
     case "/":
-        DataController::Load("Index");
+        DataController::LoadPage("Index");
     break;
 
     case "/form":
-        DataController::Load("Form");
+        DataController::LoadPage("Form");
     break;
 
     case "/form/save":
@@ -20,7 +20,7 @@ switch($url)
     break;
 
     case "/game":
-        DataController::Load("Game");
+        DataController::LoadPage("Game");
     break;
 
     case "/game/save":
@@ -28,7 +28,11 @@ switch($url)
     break;
 
     case "/ranking":
-        DataController::Load("Ranking");
+        DataController::LoadPage("Ranking");
+    break;
+
+    case "/ranking/generate_json":
+        DataController::GenerateJSON();
     break;
 
 }
