@@ -7,10 +7,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" type="image/png" href="./Assets/Images/Favicon.png">
-        <link rel="stylesheet" type="text/css" href="./Assets/CSS/Index.css">
+        <link rel="icon" type="image/png" href="/View/Assets/Images/Favicon.png">
+        <link rel="stylesheet" type="text/css" href="/View/Assets/CSS/Index.css">
 
-        <script defer type="text/javascript" src="./Assets/JS/Index.js"></script>
+        <script defer type="text/javascript" src="/View/Assets/JS/Index.js"></script>
 
         <title> Blue Lock's Memory Game </title>
 
@@ -26,7 +26,7 @@
 
         </div>
 
-        <div id="link-box"> <a href="Game.html"> START </a> </div>
+        <div id="link-box"> <a href="/form"> START </a> </div>
         
     </body>
 

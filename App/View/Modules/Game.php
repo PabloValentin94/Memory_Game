@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="pt-br">
 
     <head>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" type="image/png" href="./Assets/Images/Favicon.png">
-        <link rel="stylesheet" type="text/css" href="./Assets/CSS/Game.css">
+        <link rel="icon" type="image/png" href="/View/Assets/Images/Favicon.png">
+        <link rel="stylesheet" type="text/css" href="/View/Assets/CSS/Game.css">
 
-        <script defer type="text/javascript" src="./Assets/JS/Game.js"></script>
+        <script defer type="text/javascript" src="/View/Assets/JS/Game.js"></script>
 
         <title> (00:00:00) Game </title>
 

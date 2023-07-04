@@ -16,6 +16,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #FAEBD7;
     background-image: url("../Images/Wallpaper.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
