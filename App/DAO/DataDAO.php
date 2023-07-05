@@ -18,7 +18,7 @@ class DataDAO extends DAO
     {
 
         $sql = "INSERT INTO Player(nome_jogador, nome_usuario, " .
-               "senha, recorde) VALUES(?, ?, md5(?), ?)";
+               "senha, recorde) VALUES(?, ?, ?, ?)";
 
         $stmt = $this->conexao->prepare($sql);
 
@@ -38,7 +38,7 @@ class DataDAO extends DAO
     {
 
         $sql = "UPDATE Player SET nome_jogador = ?, nome_usuario = ?, " .
-               "senha = md5(?), recorde = ? WHERE id = ?";
+               "senha = ?, recorde = ? WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
 

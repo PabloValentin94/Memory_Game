@@ -43,7 +43,7 @@ class DataController extends Controller
     
                 $model->nome_usuario = $_POST["usuario_cadastro"];
     
-                $model->senha = $_POST["senha_cadastro"];
+                $model->senha = md5((string) $_POST["senha_cadastro"]);
     
                 $model->Save();
     
@@ -51,7 +51,7 @@ class DataController extends Controller
     
             }
     
-            else
+            else if($_POST["opcao"] == "login")
             {
     
                 $model->GetData($_POST["usuario_login"]);
@@ -62,7 +62,7 @@ class DataController extends Controller
                 {
     
                     if($_POST["usuario_login"] == $player[0]->nome_usuario
-                       && md5($_POST["senha_login"]) == $player[0]->senha)
+                       && md5((string) $_POST["senha_login"]) == $player[0]->senha)
                     {
     
                         $_SESSION["id_usuario"] = $player[0]->id;
@@ -109,6 +109,8 @@ class DataController extends Controller
             $model->senha = $_SESSION["senha"];
 
             $model->recorde = $_POST["recorde"];
+
+            unset($_SESSION["id_usuario"], $_SESSION["jogador"], $_SESSION["usuario"], $_SESSION["senha"]);
 
             $model->Save();
 

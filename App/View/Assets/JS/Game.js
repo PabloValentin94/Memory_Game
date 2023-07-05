@@ -1,17 +1,17 @@
 const cartas = [
 
-    {carta: "/View/Assets/Images/Cards/Anri/Anri.jpg"},
-    {carta: "/View/Assets/Images/Cards/Bachira/Bachira.jpg"},
-    {carta: "/View/Assets/Images/Cards/Barou/Barou.jpg"},
-    {carta: "/View/Assets/Images/Cards/Chigiri/Chigiri.jpg"},
-    {carta: "/View/Assets/Images/Cards/Ego/Ego.jpg"},
-    {carta: "/View/Assets/Images/Cards/Gagamaru/Gagamaru.jpg"},
-    {carta: "/View/Assets/Images/Cards/Isagi/Isagi.jpg"},
-    {carta: "/View/Assets/Images/Cards/Kunigami/Kunigami.jpg"},
-    {carta: "/View/Assets/Images/Cards/Nagi/Nagi.jpg"},
-    {carta: "/View/Assets/Images/Cards/Reo/Reo.jpg"},
-    {carta: "/View/Assets/Images/Cards/Rin/Rin.jpg"},
-    {carta: "/View/Assets/Images/Cards/Sae/Sae.jpg"}
+    {carta: "./View/Assets/Images/Cards/Anri/Anri.jpg"},
+    {carta: "./View/Assets/Images/Cards/Bachira/Bachira.jpg"},
+    {carta: "./View/Assets/Images/Cards/Barou/Barou.jpg"},
+    {carta: "./View/Assets/Images/Cards/Chigiri/Chigiri.jpg"},
+    {carta: "./View/Assets/Images/Cards/Ego/Ego.jpg"},
+    {carta: "./View/Assets/Images/Cards/Gagamaru/Gagamaru.jpg"},
+    {carta: "./View/Assets/Images/Cards/Isagi/Isagi.jpg"},
+    {carta: "./View/Assets/Images/Cards/Kunigami/Kunigami.jpg"},
+    {carta: "./View/Assets/Images/Cards/Nagi/Nagi.jpg"},
+    {carta: "./View/Assets/Images/Cards/Reo/Reo.jpg"},
+    {carta: "./View/Assets/Images/Cards/Rin/Rin.jpg"},
+    {carta: "./View/Assets/Images/Cards/Sae/Sae.jpg"}
 
 ];
 
@@ -209,7 +209,7 @@ function revelar_carta(id)
             
             }, 500);
     
-        }, 750);
+        }, 500);
 
     }
 
@@ -277,7 +277,7 @@ function verificar_cartas_escolhidas()
 
                 segunda_carta_escolhida = "";
 
-            }, 750);
+            }, 500);
 
         }
 
