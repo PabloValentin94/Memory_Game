@@ -24,52 +24,27 @@
 
                 <div id="options">
 
-                    <span> <input type="radio" name="opcao" value="cadastro" onclick="escolher_opcao(0)"> Cadastrar </input> </span>
+                    <span> <input title="Clique aqui, para criar um perfil no jogo." type="radio" name="opcao" value="cadastro" onclick="escolher_opcao(0)"> Cadastrar </input> </span>
 
-                    <span> <input type="radio" name="opcao" value="login" onclick="escolher_opcao(1)" checked> Entrar </input> </span>
+                    <span> <input title="Clique aqui, para usar um perfil que já exista." type="radio" name="opcao" value="login" onclick="escolher_opcao(1)" checked> Entrar </input> </span>
 
                 </div>
 
                 <div id="form">
 
-                    <div id="cadastro">
-
-                        <span>
-
-                            <label for="jogador_cadastro"> Real Name: </label>
-                            <input id="jogador_cadastro" type="text" name="jogador_cadastro" placeholder="Insira seu nome real">
-
-                        </span>
-
-                        <span>
-
-                            <label for="usuario_cadastro"> User Name: </label>
-                            <input id="usuario_cadastro" type="text" name="usuario_cadastro" placeholder="Crie um nome de jogador(a)">
-
-                        </span>
-
-                        <span>
-
-                            <label for="senha_cadastro"> Password: </label>
-                            <input id="senha_cadastro" type="password" name="senha_cadastro" placeholder="Crie uma senha">
-
-                        </span>
-
-                    </div>
-
                     <div id="login">
 
                         <span>
 
-                            <label for="usuario_login"> User Name: </label>
-                            <input id="usuario_login" type="text" name="usuario_login" placeholder="Seu nome de jogador(a)">
+                            <label for="usuario"> User Name: </label>
+                            <input id="usuario" type="text" name="usuario" placeholder="Insira seu nome de jogador(a)." required>
 
                         </span>
 
                         <span>
 
-                            <label for="senha_login"> Password: </label>
-                            <input id="senha_login" type="password" name="senha_login" placeholder="Sua senha">
+                            <label for="senha"> Password: </label>
+                            <input id="senha" type="password" name="senha" placeholder="Insira sua senha." required>
 
                         </span>
 
@@ -77,7 +52,7 @@
 
                 </div>
 
-                <button id="botao" type="submit"> ENTRAR </button>
+                <button id="botao" type="submit" aria-label="Acessar o jogo utilizando meu perfil."> Entrar </button>
 
             </form>
 

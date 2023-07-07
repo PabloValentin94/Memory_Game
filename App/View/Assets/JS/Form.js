@@ -6,25 +6,68 @@ function escolher_opcao(valor)
 
         case 0:
 
-            limpar_campos();
+            const form_cadastro = 
+            
+            "<div id='cadastro'>" +
 
-            document.getElementById("login").style.display = "none";
+                "<span>" +
 
-            document.getElementById("cadastro").style.display = "flex";
+                "<label for='cpf'> CPF: </label>" +
+                "<input id='cpf' type='number' name='cpf' placeholder='Insira seu CPF.' required>" +
 
-            document.getElementById("botao").innerText = "CADASTRAR";
+                "</span>" +
+
+                "<span>" +
+
+                    "<label for='usuario'> User Name: </label>" +
+                    "<input id='usuario' type='text' name='usuario' placeholder='Crie um nome de jogador(a).' required>" +
+
+                "</span>" +
+
+                "<span>" +
+
+                    "<label for='senha'> Password: </label>" +
+                    "<input id='senha' type='password' name='senha' placeholder='Crie uma senha.' required>" +
+
+                "</span>" +
+
+            "</div>"
+
+            document.getElementById("form").innerHTML = form_cadastro;
+
+            document.getElementById("botao").innerText = "Cadastrar";
+
+            document.getElementById("botao").ariaLabel = "Criar meu perfil no jogo.";
 
         break;
 
         case 1:
 
-            limpar_campos();
-
-            document.getElementById("cadastro").style.display = "none";
+            const form_login = 
             
-            document.getElementById("login").style.display = "flex";
+            "<div id='login'>" +
 
-            document.getElementById("botao").innerText = "ENTRAR";
+                "<span>" +
+
+                    "<label for='usuario'> User Name: </label>" +
+                    "<input id='usuario' type='text' name='usuario' placeholder='Insira seu nome de jogador(a).' required>" +
+
+                "</span>" +
+
+                "<span>" +
+
+                    "<label for='senha'> Password: </label>" +
+                    "<input id='senha' type='password' name='senha' placeholder='Insira sua senha.' required>" +
+
+                "</span>" +
+
+            "</div>"
+
+            document.getElementById("form").innerHTML = form_login;
+
+            document.getElementById("botao").innerText = "Entrar";
+
+            document.getElementById("botao").ariaLabel = "Acessar o jogo utilizando meu perfil.";
 
         break;
 
@@ -35,14 +78,15 @@ function escolher_opcao(valor)
 function limpar_campos()
 {
 
-    document.getElementById("jogador_cadastro").value = "";
+    if(document.getElementById("cpf") != null)
+    {
 
-    document.getElementById("usuario_cadastro").value = "";
+        document.getElementById("cpf").value = "";
 
-    document.getElementById("senha_cadastro").value = "";
+    }
 
-    document.getElementById("usuario_login").value = "";
+    document.getElementById("usuario").value = "";
 
-    document.getElementById("senha_login").value = "";
-    
+    document.getElementById("senha").value = "";
+
 }

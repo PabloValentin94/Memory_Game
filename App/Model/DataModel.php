@@ -7,7 +7,7 @@ use App\DAO\DataDAO;
 class DataModel extends Model
 {
 
-    public $id, $nome_jogador, $nome_usuario, $senha, $recorde;
+    public $id, $cpf, $usuario, $senha, $recorde, $ativo;
 
     public function Save()
     {
@@ -35,7 +35,7 @@ class DataModel extends Model
     public function Erase(int $id)
     {
 
-        (new DataDAO())->Delete($id);
+        (new DataDAO())->Disable($id);
 
     }
 

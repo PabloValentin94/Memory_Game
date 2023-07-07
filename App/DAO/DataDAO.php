@@ -17,18 +17,15 @@ class DataDAO extends DAO
     public function Insert(DataModel $model) : bool
     {
 
-        $sql = "INSERT INTO Player(nome_jogador, nome_usuario, " .
-               "senha, recorde) VALUES(?, ?, ?, ?)";
+        $sql = "INSERT INTO Player(cpf, usuario, senha) VALUES(?, ?, ?)";
 
         $stmt = $this->conexao->prepare($sql);
 
-        $stmt->bindValue(1, $model->nome_jogador);
+        $stmt->bindValue(1, $model->cpf);
 
-        $stmt->bindValue(2, $model->nome_usuario);
+        $stmt->bindValue(2, $model->usuario);
 
         $stmt->bindValue(3, $model->senha);
-
-        $stmt->bindValue(4, $model->recorde);
 
         return $stmt->execute();
 
@@ -37,14 +34,13 @@ class DataDAO extends DAO
     public function Update(DataModel $model) : bool
     {
 
-        $sql = "UPDATE Player SET nome_jogador = ?, nome_usuario = ?, " .
-               "senha = ?, recorde = ? WHERE id = ?";
+        $sql = "UPDATE Player SET cpf = ?, usuario = ?, senha = ?, recorde = ? WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
 
-        $stmt->bindValue(1, $model->nome_jogador);
+        $stmt->bindValue(1, $model->cpf);
 
-        $stmt->bindValue(2, $model->nome_usuario);
+        $stmt->bindValue(2, $model->usuario);
 
         $stmt->bindValue(3, $model->senha);
 
@@ -56,14 +52,16 @@ class DataDAO extends DAO
 
     }
 
-    public function Delete(int $id) : bool
+    public function Disable(int $id) : bool
     {
 
-        $sql = "DELETE FROM Player WHERE id = ?";
+        $sql = "UPDATE Player SET ativo = ? WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
 
-        $stmt->bindValue(1, $id);
+        $stmt->bindValue(1, false);
+
+        $stmt->bindValue(2, $id);
 
         return $stmt->execute();
 
@@ -72,7 +70,7 @@ class DataDAO extends DAO
     public function Select() : array
     {
 
-        $sql = "SELECT * FROM Player ORDER BY recorde ASC, nome_usuario ASC";
+        $sql = "SELECT * FROM Player WHERE LENGTH(recorde) > 0 AND ativo = 1 ORDER BY recorde ASC, usuario ASC";
 
         $stmt = $this->conexao->prepare($sql);
 
@@ -87,8 +85,7 @@ class DataDAO extends DAO
 
         $parametro = [":filtro" => "%" . $valor . "%"];
 
-        $sql = "SELECT * FROM Player WHERE nome_usuario " .
-               "LIKE :filtro ORDER BY recorde ASC";
+        $sql = "SELECT * FROM Player WHERE usuario LIKE :filtro AND ativo = 1 ORDER BY recorde ASC, usuario ASC";
 
         $stmt = $this->conexao->prepare($sql);
 

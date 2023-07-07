@@ -31,7 +31,7 @@ switch($url)
         DataController::LoadPage("Ranking");
     break;
 
-    case "/ranking/generate_json":
+    case "/generate_json":
         DataController::GenerateJSON();
     break;
 
