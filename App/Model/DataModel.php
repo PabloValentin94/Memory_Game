@@ -39,12 +39,12 @@ class DataModel extends Model
 
     }
 
-    public function GetData(string $filtro = null)
+    public function GetData(string $filtro = null, string $coluna = null)
     {
 
         $dao = new DataDAO();
 
-        $this->dados = ($filtro == null) ? $dao->Select() : $dao->Search($filtro);
+        $this->dados = ($filtro == null) ? $dao->Select() : $dao->Search($filtro, $coluna);
 
         /*if($filtro == null)
         {

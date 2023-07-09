@@ -26,6 +26,39 @@ abstract class Controller
 
     }
 
+    protected static function InputVerification(string $input) : bool
+    {
+
+        $quantidade_espacos_brancos = 0;
+
+        for($i = 0; $i < strlen($input); $i++)
+        {
+
+            if($input[$i] == " ")
+            {
+
+                $quantidade_espacos_brancos++;
+                
+            }
+
+        }
+
+        if($quantidade_espacos_brancos == strlen($input))
+        {
+
+            return true;
+
+        }
+
+        else
+        {
+
+            return false;
+
+        }
+
+    }
+
     protected static function SendReturnAsJSON($data) : void
     {
 

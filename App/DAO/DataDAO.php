@@ -80,12 +80,12 @@ class DataDAO extends DAO
 
     }
 
-    public function Search(string $valor) : array
+    public function Search(string $valor_filtro, $valor_coluna) : array
     {
 
-        $parametro = [":filtro" => "%" . $valor . "%"];
+        $parametro = [":filtro" => "%" . $valor_filtro . "%"];
 
-        $sql = "SELECT * FROM Player WHERE usuario LIKE :filtro AND ativo = 1 ORDER BY recorde ASC, usuario ASC";
+        $sql = "SELECT * FROM Player WHERE $valor_coluna LIKE :filtro AND ativo = 1 ORDER BY recorde ASC, usuario ASC";
 
         $stmt = $this->conexao->prepare($sql);
 
