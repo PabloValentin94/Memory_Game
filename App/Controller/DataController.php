@@ -28,7 +28,7 @@ class DataController extends Controller
 
     }
 
-    public static function SaveData() : void
+    public static function Register() : void
     {
 
         try
@@ -36,23 +36,50 @@ class DataController extends Controller
 
             $model = new DataModel();
 
-            if($_POST["opcao"] == "cadastro")
+            $model->GetData($_POST["usuario"], "usuario");
+
+            $usuarios = $model->dados;
+
+            $model->GetData($_POST["cpf"], "cpf");
+
+            $cpfs = $model->dados;
+
+            if(parent::InputVerification($_POST["cpf"]) ||
+               parent::InputVerification($_POST["usuario"]) ||
+               parent::InputVerification($_POST["senha"]))
             {
 
-                $model->GetData($model->usuario, "usuario");
+                echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
+                     "history.pushState(null,null,'http://localhost:8000/form'); " .
+                     "window.location.reload(true); </script>";
 
-                $usuarios = $model->dados;
+            }
 
-                $model->GetData($model->cpf, "cpf");
+            else
+            {
 
-                $cpfs = $model->dados;
-
-                if(parent::InputVerification($_POST["cpf"]) ||
-                   parent::InputVerification($_POST["usuario"]) ||
-                   parent::InputVerification($_POST["senha"]))
+                if(count($usuarios) > 0 && count($cpfs) > 0)
                 {
 
-                    echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
+                    echo "<script> alert('Este Usuário e CPF já estão cadastrados! Tente outras opções.'); " .
+                         "history.pushState(null,null,'http://localhost:8000/form'); " .
+                         "window.location.reload(true); </script>";
+
+                }
+
+                else if(count($usuarios) > 0)
+                {
+
+                    echo "<script> alert('Este Usuário já está cadastrado! Tente outra opção.'); " .
+                         "history.pushState(null,null,'http://localhost:8000/form'); " .
+                         "window.location.reload(true); </script>";
+
+                }
+
+                else if(count($cpfs) > 0)
+                {
+
+                    echo "<script> alert('Este CPF já está cadastrado! Tente outra opção.'); " .
                          "history.pushState(null,null,'http://localhost:8000/form'); " .
                          "window.location.reload(true); </script>";
 
@@ -61,114 +88,179 @@ class DataController extends Controller
                 else
                 {
 
-                    if(count($usuarios) > 0 && count($cpfs) > 0)
+                    $simbolos_especiais = [".", ",", "+", "-", "E", "e"];
+
+                    $model->cpf = trim(str_replace($simbolos_especiais, "", $_POST["cpf"]));
+        
+                    $model->usuario = trim($_POST["usuario"]);
+        
+                    $model->senha = md5(trim($_POST["senha"]));
+
+                    $model->Save();
+
+                    header("Location: /form");
+
+                }
+
+            }
+
+        }
+
+        catch(Exception $ex)
+        {
+
+            exit("Erro: " . $ex);
+
+        }
+
+    }
+
+    public static function Edit() : void
+    {
+
+        try
+        {
+
+            $model = new DataModel();
+
+        }
+
+        catch(Exception $ex)
+        {
+
+            exit("Erro: " . $ex);
+
+        }
+
+    }
+
+    public static function Deactivate() : void
+    {
+
+        try
+        {
+
+            $model = new DataModel();
+
+        }
+
+        catch(Exception $ex)
+        {
+
+            exit("Erro: " . $ex);
+
+        }
+
+    }
+
+    public static function Login() : void
+    {
+
+        try
+        {
+
+            $model = new DataModel();
+
+            if(parent::InputVerification($_POST["usuario"]) ||
+               parent::InputVerification($_POST["senha"]))
+            {
+
+                echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
+                     "history.pushState(null,null,'http://localhost:8000/form'); " .
+                     "window.location.reload(true); </script>";
+
+            }
+
+            else
+            {
+
+                $model->GetData($_POST["usuario"], "usuario");
+
+                $player = $model->dados;
+
+                if($player)
+                {
+
+                    if($_POST["usuario"] == $player[0]->usuario &&
+                    md5($_POST["senha"]) == $player[0]->senha)
                     {
-    
-                        echo "<script> alert('Este Usuário e CPF já estão cadastrados! Tente outras opções.'); " .
-                             "history.pushState(null,null,'http://localhost:8000/form'); " .
-                             "window.location.reload(true); </script>";
-    
+
+                        $_SESSION["id_usuario"] = $player[0]->id;
+
+                        $_SESSION["cpf"] = $player[0]->cpf;
+
+                        $_SESSION["usuario"] = $player[0]->usuario;
+        
+                        $_SESSION["senha"] = $player[0]->senha;
+        
+                        header("Location: /game");
+
                     }
-    
-                    else if(count($usuarios) > 0)
-                    {
-    
-                        echo "<script> alert('Este Usuário já está cadastrado! Tente outra opção.'); " .
-                             "history.pushState(null,null,'http://localhost:8000/form'); " .
-                             "window.location.reload(true); </script>";
-    
-                    }
-    
-                    else if(count($cpfs) > 0)
-                    {
-    
-                        echo "<script> alert('Este CPF já está cadastrado! Tente outra opção.'); " .
-                             "history.pushState(null,null,'http://localhost:8000/form'); " .
-                             "window.location.reload(true); </script>";
-    
-                    }
-    
+
                     else
                     {
-    
-                        $simbolos_especiais = [".", ",", "+", "-", "E", "e"];
-        
-                        $model->cpf = trim(str_replace($simbolos_especiais, "", $_POST["cpf"]));
-            
-                        $model->usuario = trim($_POST["usuario"]);
-            
-                        $model->senha = md5(trim($_POST["senha"]));
-    
-                        $model->Save();
-    
-                        header("Location: /form");
-    
+
+                        echo "<script> alert('Senha incorreta! Revise seus dados e tente novamente.'); " .
+                             "history.pushState(null,null,'http://localhost:8000/form'); " .
+                             "window.location.reload(true); </script>";
+
                     }
 
                 }
+
+                else
+                {
+
+                    echo "<script> alert('Esse usuário não existe! Verifique se você realmente está cadastrado.'); " .
+                         "history.pushState(null,null,'http://localhost:8000/form'); " .
+                         "window.location.reload(true); </script>";
+
+                }
+
+            }
+
+        }
+
+        catch(Exception $ex)
+        {
+
+            exit("Erro: " . $ex);
+
+        }
+
+    }
+
+    public static function SaveData() : void
+    {
+
+        try
+        {
+
+            if($_POST["opcao"] == "cadastro")
+            {
+
+                self::Register();
     
+            }
+
+            else if($_POST["opcao"] == "edicao")
+            {
+
+                self::Edit();
+
+            }
+
+            else if($_POST["opcao"] == "desativacao")
+            {
+
+                self::Deactivate();
+
             }
     
             else
             {
 
-                if(parent::InputVerification($_POST["usuario"]) ||
-                   parent::InputVerification($_POST["senha"]))
-                {
-
-                    echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
-                         "history.pushState(null,null,'http://localhost:8000/form'); " .
-                         "window.location.reload(true); </script>";
-
-                }
-
-                else
-                {
-
-                    $model->GetData($_POST["usuario"], "usuario");
-    
-                    $player = $model->dados;
-        
-                    if($player)
-                    {
-        
-                        if($_POST["usuario"] == $player[0]->usuario &&
-                           md5($_POST["senha"]) == $player[0]->senha)
-                        {
-        
-                            $_SESSION["id_usuario"] = $player[0]->id;
-        
-                            $_SESSION["cpf"] = $player[0]->cpf;
-        
-                            $_SESSION["usuario"] = $player[0]->usuario;
-            
-                            $_SESSION["senha"] = $player[0]->senha;
-            
-                            header("Location: /game");
-        
-                        }
-
-                        else
-                        {
-
-                            echo "<script> alert('Senha incorreta! Revise seus dados e tente novamente.'); " .
-                                 "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                 "window.location.reload(true); </script>";
-
-                        }
-        
-                    }
-    
-                    else
-                    {
-
-                        echo "<script> alert('Esse usuário não existe! Verifique se você realmente está cadastrado.'); " .
-                             "history.pushState(null,null,'http://localhost:8000/form'); " .
-                             "window.location.reload(true); </script>";
-    
-                    }
-
-                }
+                self::Login();
     
             }
 
@@ -232,6 +324,13 @@ class DataController extends Controller
             {
 
                 parent::SendReturnAsJSON($model->dados);
+
+            }
+
+            else
+            {
+
+                parent::SendReturnAsJSON("Nada a retornar.");
 
             }
 

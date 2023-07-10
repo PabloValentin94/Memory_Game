@@ -24,9 +24,15 @@
 
                 <div id="options">
 
-                    <span> <input title="Clique aqui, para criar um perfil no jogo." type="radio" name="opcao" value="cadastro" onclick="escolher_opcao(0)"> Cadastrar </input> </span>
+                    <label for="opcao"> Escolha o que deseja fazer: </label>
+                    <select id="opcao" name="opcao" onchange="mudar_formulario()">
 
-                    <span> <input title="Clique aqui, para usar um perfil que já exista." type="radio" name="opcao" value="login" onclick="escolher_opcao(1)" checked> Entrar </input> </span>
+                        <option title="Clique aqui, para criar um perfil no jogo." value="cadastro"> Cadastro </option>
+                        <option title="Clique aqui, para editar um perfil do jogo." value="edicao"> Editar </option>
+                        <option title="Clique aqui, para desativar um perfil do jogo." value="banimento"> Banir </option>
+                        <option title="Clique aqui, para usar um perfil que já exista." value="login" selected> Login </option>
+
+                    </select>
 
                 </div>
 

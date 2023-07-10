@@ -207,9 +207,9 @@ function revelar_carta(id)
     
                 verificar_cartas_escolhidas();
             
-            }, 500);
+            }, 350);
     
-        }, 500);
+        }, 350);
 
     }
 
@@ -277,7 +277,7 @@ function verificar_cartas_escolhidas()
 
                 segunda_carta_escolhida = "";
 
-            }, 500);
+            }, 350);
 
         }
 
