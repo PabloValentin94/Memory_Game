@@ -9,7 +9,7 @@ class DataModel extends Model
 
     public $id, $cpf, $usuario, $senha, $recorde, $ativo;
 
-    public function Save()
+    public function Save() : void
     {
 
         $dao = new DataDAO();
@@ -32,21 +32,21 @@ class DataModel extends Model
 
     }
 
-    public function Erase(int $id)
+    public function Erase(int $id) : void
     {
 
         (new DataDAO())->Disable($id);
 
     }
 
-    public function GetData(string $filtro = null, string $coluna = null)
+    public function GetData(string $filtro = null, string $coluna = null) : void
     {
 
         $dao = new DataDAO();
 
-        $this->dados = ($filtro == null) ? $dao->Select() : $dao->Search($filtro, $coluna);
+        $this->dados = ($filtro == null && $coluna == null) ? $dao->Select() : $dao->Search($filtro, $coluna);
 
-        /*if($filtro == null)
+        /*if($filtro == null && $coluna == null)
         {
 
             $this->dados = $dao->Select();
@@ -56,7 +56,7 @@ class DataModel extends Model
         else
         {
 
-            $this->dados = $dao->Search($filtro);
+            $this->dados = $dao->Search($filtro, $coluna);
 
         }*/
 

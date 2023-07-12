@@ -93,7 +93,7 @@ function mudar_formulario()
 
             document.getElementById("choice").style.width = "450px";
 
-            const form_desativacao = 
+            const form_banimento = 
                 
             "<div id='banimento'>" +
 
@@ -113,7 +113,7 @@ function mudar_formulario()
 
             "</div>"
 
-            document.getElementById("form").innerHTML = form_desativacao;
+            document.getElementById("form").innerHTML = form_banimento;
 
             document.getElementById("botao").innerText = "Desativar";
 
