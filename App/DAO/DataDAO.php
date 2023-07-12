@@ -59,7 +59,7 @@ class DataDAO extends DAO
 
         $stmt = $this->conexao->prepare($sql);
 
-        $stmt->bindValue(1, false);
+        $stmt->bindValue(1, 0);
 
         $stmt->bindValue(2, $id);
 
@@ -70,7 +70,7 @@ class DataDAO extends DAO
     public function Select() : array
     {
 
-        $sql = "SELECT * FROM Player WHERE LENGTH(recorde) > 0 AND ativo = 1 ORDER BY recorde ASC, usuario ASC";
+        $sql = "SELECT * FROM Player WHERE ativo = 1 ORDER BY recorde ASC, usuario ASC";
 
         $stmt = $this->conexao->prepare($sql);
 

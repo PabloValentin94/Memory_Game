@@ -75,6 +75,7 @@ body {
     font-size: 40px;
     color: #00007D;
     text-shadow: 3px 3px #000000;
+    cursor: text;
 
 }
 
@@ -141,6 +142,7 @@ body {
     font-size: 30px;
     font-weight: bolder;
     color: #00007D;
+    cursor: text;
 
 }
 
@@ -154,5 +156,6 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: #000000;
+    cursor: text;
     
 }

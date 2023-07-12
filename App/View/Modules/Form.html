@@ -25,7 +25,7 @@
                 <div id="options">
 
                     <label for="opcao"> Escolha o que deseja fazer: </label>
-                    <select id="opcao" name="opcao" onchange="mudar_formulario()">
+                    <select id="opcao" name="opcao" onchange="mudar_formulario(document.getElementById('opcao').value)">
 
                         <option title="Clique aqui, para criar um perfil no jogo." value="cadastro"> Cadastro </option>
                         <option title="Clique aqui, para editar um perfil do jogo." value="edicao"> Edição </option>
@@ -36,27 +36,7 @@
 
                 </div>
 
-                <div id="form">
-
-                    <div id="login">
-
-                        <span>
-
-                            <label for="usuario"> User Name: </label>
-                            <input id="usuario" type="text" name="usuario" placeholder="Insira seu nome de jogador(a)." required>
-
-                        </span>
-
-                        <span>
-
-                            <label for="senha"> Password: </label>
-                            <input id="senha" type="password" name="senha" placeholder="Insira sua senha." required>
-
-                        </span>
-
-                    </div>
-
-                </div>
+                <div id="form">  </div>
 
                 <button id="botao" type="submit" aria-label="Acessar o jogo utilizando meu perfil."> Entrar </button>
 

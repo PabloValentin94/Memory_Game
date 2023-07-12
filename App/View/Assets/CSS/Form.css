@@ -70,6 +70,7 @@ body {
     font-weight: bolder;
     color: #000000;
     margin-right: 2px;
+    cursor: text;
 
 }
 
@@ -86,7 +87,8 @@ body {
     border-radius: 2px;
     margin-left: 2px;
     padding: 2px;
-    outline: 1px solid #000000;
+    outline: 2px solid #000000;
+    cursor: pointer;
 
 }
 
@@ -110,10 +112,11 @@ body {
     font-size: 17px;
     font-weight: bold;
     color: #000000;
+    cursor: text;
 
 }
 
-#form input {
+#form input, #form select {
 
     width: 60%;
     display: flex;
@@ -126,10 +129,11 @@ body {
     border-radius: 2px;
     padding: 5px;
     outline: 1px solid #000000;
+    cursor: pointer;
 
 }
 
-#form input:focus {
+#form input:focus, #form select:focus {
 
     outline: 2px solid #00007D;
 
@@ -166,13 +170,13 @@ body {
 
 }
 
-#cadastro label, #cadastro span input {
+#cadastro span label, #cadastro span input {
 
     height: 60%;
 
 }
 
-#edicao label, #edicao span input {
+#edicao span label, #edicao span input {
 
     height: 80%;
 
@@ -188,7 +192,7 @@ body {
 
 }
 
-#banimento label, #banimento span input, #login label, #login span input {
+#banimento span label, #banimento span select, #login span label, #login span input {
 
     height: 40%;
 
@@ -196,6 +200,9 @@ body {
 
 #botao {
 
+    display: none;
+    align-items: center;
+    justify-content: center;
     border: 3px solid #000000;
     border-radius: 5px;
     background-color: #00007D;

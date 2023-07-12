@@ -272,14 +272,14 @@ class DataController extends Controller
 
                 }
 
-                /*else
+                else
                 {
 
                     echo "<script> alert('Esse usuário não existe! Verifique se você realmente está cadastrado.'); " .
                          "history.pushState(null,null,'http://localhost:8000/form'); " .
                          "window.location.reload(true); </script>";
 
-                }*/
+                }
 
             }
 
@@ -300,7 +300,37 @@ class DataController extends Controller
         try
         {
 
-            $model = new DataModel();
+            if(parent::InputVerification($_POST["chave"]))
+            {
+
+                echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
+                     "history.pushState(null,null,'http://localhost:8000/form'); " .
+                     "window.location.reload(true); </script>";
+
+            }
+
+            else
+            {
+
+                if(md5(trim($_POST["chave"])) == MASTER)
+                {
+
+                    (new DataModel())->Erase((int) $_POST["jogador"]);
+
+                    header("Location: /form");
+
+                }
+
+                else
+                {
+
+                    echo "<script> alert('Senha mestra incorreta! Tente novamente.'); " .
+                         "history.pushState(null,null,'http://localhost:8000/form'); " .
+                         "window.location.reload(true); </script>";
+
+                }
+
+            }
 
         }
 
@@ -391,14 +421,14 @@ class DataController extends Controller
 
                 }
 
-                /*else
+                else
                 {
 
                     echo "<script> alert('Esse usuário não existe! Verifique se você realmente está cadastrado.'); " .
                          "history.pushState(null,null,'http://localhost:8000/form'); " .
                          "window.location.reload(true); </script>";
 
-                }*/
+                }
 
             }
 
@@ -433,7 +463,7 @@ class DataController extends Controller
 
             }
 
-            else if($_POST["opcao"] == "desativacao")
+            else if($_POST["opcao"] == "banimento")
             {
 
                 self::DeactivateUser();
