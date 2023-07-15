@@ -48,110 +48,143 @@ class DataController extends Controller
             else
             {
 
-                $model = new DataModel();
-
-                $model->GetData($_POST["usuario"], "usuario");
-
-                $usuarios = $model->dados;
-
-                if($usuarios)
+                switch(parent::CPF_Validation($_POST["cpf"]))
                 {
 
-                    $condicao = 0;
+                    case 0:
 
-                    foreach($usuarios as $item)
-                    {
-    
-                        if($item->usuario == $_POST["usuario"] && $item->cpf == $_POST["cpf"])
-                        {
-    
-                            $condicao = 1;
-    
-                            break;
-    
-                        }
-    
-                        else if($item->usuario == $_POST["usuario"])
-                        {
-    
-                            $condicao = 2;
-    
-                            break;
-    
-                        }
-    
-                        else if($item->cpf == $_POST["cpf"])
-                        {
-    
-                            $condicao = 3;
-    
-                            break;
-    
-                        }
-    
-                    }
-    
-                    switch($condicao)
-                    {
+                        echo "<script> alert('Um CPF deve conter 11 algarismos! Revise seus dados e tente novamente.'); " .
+                        "history.pushState(null,null,'http://localhost:8000/form'); " .
+                        "window.location.reload(true); </script>";
 
-                        case 0:
-    
+                    break;
+
+                    case 1:
+
+                        echo "<script> alert('CPFs cujos algarismos são todos iguais, são automaticamente inválidos! Revise seus dados e tente novamente.'); " .
+                        "history.pushState(null,null,'http://localhost:8000/form'); " .
+                        "window.location.reload(true); </script>";
+
+                    break;
+
+                    case 2:
+
+                        echo "<script> alert('CPF inválido! Revise seus dados e tente novamente.'); " .
+                        "history.pushState(null,null,'http://localhost:8000/form'); " .
+                        "window.location.reload(true); </script>";
+
+                    break;
+
+                    case 3:
+
+                        $model = new DataModel();
+
+                        $model->GetData($_POST["usuario"], "usuario");
+        
+                        $usuarios = $model->dados;
+        
+                        if($usuarios)
+                        {
+        
+                            $condicao = 0;
+        
+                            foreach($usuarios as $item)
+                            {
+            
+                                if($item->usuario == $_POST["usuario"] && $item->cpf == $_POST["cpf"])
+                                {
+            
+                                    $condicao = 1;
+            
+                                    break;
+            
+                                }
+            
+                                else if($item->usuario == $_POST["usuario"])
+                                {
+            
+                                    $condicao = 2;
+            
+                                    break;
+            
+                                }
+            
+                                else if($item->cpf == $_POST["cpf"])
+                                {
+            
+                                    $condicao = 3;
+            
+                                    break;
+            
+                                }
+            
+                            }
+            
+                            switch($condicao)
+                            {
+        
+                                case 0:
+            
+                                    $simbolos_especiais = [".", ",", "+", "-", "E", "e"];
+            
+                                    $model->cpf = trim(str_replace($simbolos_especiais, "", $_POST["cpf"]));
+                        
+                                    $model->usuario = trim($_POST["usuario"]);
+                        
+                                    $model->senha = md5(trim($_POST["senha"]));
+            
+                                    $model->Save();
+            
+                                    header("Location: /form");
+            
+                                break;
+            
+                                case 1:
+            
+                                    echo "<script> alert('Este Usuário e CPF já estão cadastrados! Tente outras opções.'); " .
+                                         "history.pushState(null,null,'http://localhost:8000/form'); " .
+                                         "window.location.reload(true); </script>";
+            
+                                break;
+            
+                                case 2:
+            
+                                    echo "<script> alert('Este Usuário já está cadastrado! Tente outra opção.'); " .
+                                         "history.pushState(null,null,'http://localhost:8000/form'); " .
+                                         "window.location.reload(true); </script>";
+            
+                                break;
+            
+                                case 3:
+            
+                                    echo "<script> alert('Este CPF já está cadastrado! Tente outra opção.'); " .
+                                         "history.pushState(null,null,'http://localhost:8000/form'); " .
+                                         "window.location.reload(true); </script>";
+            
+                                break;
+            
+                            }
+        
+                        }
+        
+                        else
+                        {
+        
                             $simbolos_especiais = [".", ",", "+", "-", "E", "e"];
-    
+            
                             $model->cpf = trim(str_replace($simbolos_especiais, "", $_POST["cpf"]));
                 
                             $model->usuario = trim($_POST["usuario"]);
                 
                             $model->senha = md5(trim($_POST["senha"]));
-    
+        
                             $model->Save();
-    
+        
                             header("Location: /form");
-    
-                        break;
-    
-                        case 1:
-    
-                            echo "<script> alert('Este Usuário e CPF já estão cadastrados! Tente outras opções.'); " .
-                                 "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                 "window.location.reload(true); </script>";
-    
-                        break;
-    
-                        case 2:
-    
-                            echo "<script> alert('Este Usuário já está cadastrado! Tente outra opção.'); " .
-                                 "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                 "window.location.reload(true); </script>";
-    
-                        break;
-    
-                        case 3:
-    
-                            echo "<script> alert('Este CPF já está cadastrado! Tente outra opção.'); " .
-                                 "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                 "window.location.reload(true); </script>";
-    
-                        break;
-    
-                    }
-
-                }
-
-                else
-                {
-
-                    $simbolos_especiais = [".", ",", "+", "-", "E", "e"];
-    
-                    $model->cpf = trim(str_replace($simbolos_especiais, "", $_POST["cpf"]));
         
-                    $model->usuario = trim($_POST["usuario"]);
-        
-                    $model->senha = md5(trim($_POST["senha"]));
+                        }
 
-                    $model->Save();
-
-                    header("Location: /form");
+                    break;
 
                 }
 
@@ -200,7 +233,7 @@ class DataController extends Controller
 
                     $condicao = 0;
 
-                    $id_player = 0;
+                    $id_array = 0;
 
                     foreach($usuarios as $item)
                     {
@@ -214,6 +247,8 @@ class DataController extends Controller
 
                                 $condicao = 1;
 
+                                break;
+
                             }
 
                             else
@@ -221,11 +256,11 @@ class DataController extends Controller
 
                                 $condicao = 2;
 
-                                $id_player = $item->id - 1;
-
                                 break;
 
                             }
+
+                            $id_array++;
         
                         }
 
@@ -252,15 +287,15 @@ class DataController extends Controller
 
                         case 2:
 
-                            $model->id = (int) $usuarios[$id_player]->id;
+                            $model->id = (int) $usuarios[$id_array]->id;
 
-                            $model->cpf = $usuarios[$id_player]->cpf;
+                            $model->cpf = $usuarios[$id_array]->cpf;
 
                             $model->usuario = trim($_POST["usuario_novo"]);
             
                             $model->senha = md5(trim($_POST["senha_nova"]));
 
-                            $model->recorde = $usuarios[$id_player]->recorde;
+                            $model->recorde = $usuarios[$id_array]->recorde;
 
                             $model->Save();
 
@@ -373,7 +408,7 @@ class DataController extends Controller
 
                     $condicao = 0;
 
-                    $id_player = 0;
+                    $id_array = 0;
 
                     foreach($usuarios as $item)
                     {
@@ -383,12 +418,12 @@ class DataController extends Controller
                         {
 
                             $condicao = 1;
-    
-                            $id_player = $item->id - 1;
 
                             break;
     
                         }
+
+                        $id_array++;
 
                     }
 
@@ -405,13 +440,13 @@ class DataController extends Controller
 
                         case 1:
 
-                            $_SESSION["id_usuario"] = $usuarios[$id_player]->id;
+                            $_SESSION["id_usuario"] = $usuarios[$id_array]->id;
     
-                            $_SESSION["cpf"] = $usuarios[$id_player]->cpf;
+                            $_SESSION["cpf"] = $usuarios[$id_array]->cpf;
     
-                            $_SESSION["usuario"] = $usuarios[$id_player]->usuario;
+                            $_SESSION["usuario"] = $usuarios[$id_array]->usuario;
             
-                            $_SESSION["senha"] = $usuarios[$id_player]->senha;
+                            $_SESSION["senha"] = $usuarios[$id_array]->senha;
             
                             header("Location: /game");
 

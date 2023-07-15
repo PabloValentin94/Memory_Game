@@ -46,7 +46,7 @@ body {
 
 }
 
-#video-box button {
+#video-button {
 
     height: 175px;
     width: 175px;
@@ -62,12 +62,27 @@ body {
 
 }
 
+#skip-video-button {
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #00007D;
+    border: 2px solid #FFFFFF;
+    border-radius: 10px;
+    padding: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
+
 #link-box {
 
-    /*height: 40%;
-    width: 30%;*/
-    height: 325px;
-    width: 325px;
+    height: 250px;
+    width: 250px;
     display: none;
     align-items: center;
     justify-content: center;
@@ -82,18 +97,18 @@ body {
 
 #link-box a {
 
-    color: #0000FF;
+    color: #FFFF00;
     text-decoration: none;cursor: pointer;
     margin-top: 20px;
     font-size: 15px;
-    cursor: text;
+    cursor: pointer;
 
 }
 
 #link-box a:hover {
 
     font-size: 20px;
-    color: #FFFF00;
+    color: #0000FF;
 
 }
 
