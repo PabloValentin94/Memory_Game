@@ -14,7 +14,7 @@ class DataModel extends Model
 
         $dao = new DataDAO();
 
-        empty($this->id) ? $dao->Insert($this) : $dao->Update($this);
+        (empty($this->id)) ? $dao->Insert($this) : $dao->Update($this);
 
         /*if(empty($this->id))
         {

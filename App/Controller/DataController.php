@@ -9,13 +9,20 @@ use Exception;
 class DataController extends Controller
 {
 
-    public static function LoadPage(string $option) : void
+    public static function LoadPage(string $arquivo_html) : void
     {
 
         try
         {
 
-            parent::ViewRenderer($option);
+            if($arquivo_html != "Game")
+            {
+
+                session_destroy();
+
+            }
+
+            parent::ViewRenderer($arquivo_html);
 
         }
 
@@ -79,7 +86,7 @@ class DataController extends Controller
 
                         $model = new DataModel();
 
-                        $model->GetData($_POST["usuario"], "usuario");
+                        $model->GetData();
         
                         $usuarios = $model->dados;
         
@@ -484,32 +491,33 @@ class DataController extends Controller
         try
         {
 
-            if($_POST["opcao"] == "cadastro")
+            switch($_POST["opcao"])
             {
 
-                self::RegisterUser();
-    
-            }
+                case "cadastro":
 
-            else if($_POST["opcao"] == "edicao")
-            {
+                    self::RegisterUser();
 
-                self::EditUser();
+                break;
 
-            }
+                case "edicao":
 
-            else if($_POST["opcao"] == "banimento")
-            {
+                    self::EditUser();
 
-                self::DeactivateUser();
+                break;
 
-            }
-    
-            else
-            {
+                case "banimento":
 
-                self::LoginUser();
-    
+                    self::DeactivateUser();
+
+                break;
+
+                case "login":
+
+                    self::LoginUser();
+
+                break;
+
             }
 
         }
@@ -531,19 +539,33 @@ class DataController extends Controller
 
             $model = new DataModel();
 
-            $model->id = (int) $_SESSION["id_usuario"];
+            $model->GetData($_SESSION["usuario"], "usuario");
 
-            $model->cpf = $_SESSION["cpf"];
+            $jogador = $model->dados;
 
-            $model->usuario = $_SESSION["usuario"];
+            if($jogador)
+            {
 
-            $model->senha = $_SESSION["senha"];
+                if($jogador[0]->recorde == NULL || min([$jogador[0]->recorde, $_POST["recorde"]]) == $_POST["recorde"])
+                {
 
-            $model->recorde = $_POST["recorde"];
+                    $model->id = (int) $_SESSION["id_usuario"];
 
-            unset($_SESSION["id_usuario"], $_SESSION["cpf"], $_SESSION["usuario"], $_SESSION["senha"]);
+                    $model->cpf = $_SESSION["cpf"];
+        
+                    $model->usuario = $_SESSION["usuario"];
+        
+                    $model->senha = $_SESSION["senha"];
+        
+                    $model->recorde = $_POST["recorde"];
+    
+                    $model->Save();
 
-            $model->Save();
+                }
+
+            }
+
+            //unset($_SESSION["id_usuario"], $_SESSION["cpf"], $_SESSION["usuario"], $_SESSION["senha"]);
 
             header("Location: /form");
 

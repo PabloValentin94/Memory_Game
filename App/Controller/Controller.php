@@ -84,10 +84,10 @@ abstract class Controller
 
             $condicao = true;
 
-            foreach($cpfs_automaticamente_invalidos as $cpf_invalido)
+            foreach($cpfs_automaticamente_invalidos as $cpf_automaticamente_invalido)
             {
 
-                if($cpf == $cpf_invalido)
+                if($cpf == $cpf_automaticamente_invalido)
                 {
 
                     $condicao = false;

@@ -45,21 +45,24 @@ function mudar_formulario(valor)
                 "<span>" +
 
                 "<label for='cpf'> CPF: </label>" +
-                "<input id='cpf' type='number' name='cpf' placeholder='Insira seu CPF.' min='10000000000' max='99999999999' required>" +
+                "<input id='cpf' type='number' name='cpf' placeholder='Insira seu CPF.'" +
+                " min='10000000000' max='99999999999' autocomplete='off' required>" +
 
                 "</span>" +
 
                 "<span>" +
 
                     "<label for='usuario'> User Name: </label>" +
-                    "<input id='usuario' type='text' name='usuario' placeholder='Crie um nome de jogador(a).' minlength='2' maxlength='25' required>" +
+                    "<input id='usuario' type='text' name='usuario' placeholder='Crie um nome de jogador(a).'" +
+                    " minlength='2' maxlength='25' autocomplete='off' required>" +
 
                 "</span>" +
 
                 "<span>" +
 
                     "<label for='senha'> Password: </label>" +
-                    "<input id='senha' type='password' name='senha' placeholder='Crie uma senha.' minlength='4' maxlength='20' required>" +
+                    "<input id='senha' type='password' name='senha' placeholder='Crie uma senha.'" +
+                    " minlength='4' maxlength='20' autocomplete='off' required>" +
 
                 "</span>" +
 
@@ -92,28 +95,32 @@ function mudar_formulario(valor)
                 "<span>" +
 
                     "<label for='usuario'> User Name: </label>" +
-                    "<input id='usuario' type='text' name='usuario' placeholder='Insira seu atual nome de jogador(a).' minlength='2' maxlength='25' required>" +
+                    "<input id='usuario' type='text' name='usuario' placeholder='Insira seu atual nome de jogador(a).'" +
+                    " minlength='2' maxlength='25' autocomplete='off' required>" +
 
                 "</span>" +
 
                 "<span>" +
 
                     "<label for='senha'> Password: </label>" +
-                    "<input id='senha' type='password' name='senha' placeholder='Insira sua atual senha.' minlength='4' maxlength='20' required>" +
+                    "<input id='senha' type='password' name='senha' placeholder='Insira sua atual senha.'" +
+                    " minlength='4' maxlength='20' autocomplete='off' required>" +
 
                 "</span>" +
 
                 "<span>" +
 
                     "<label for='usuario_novo'> New User Name: </label>" +
-                    "<input id='usuario_novo' type='text' name='usuario_novo' placeholder='Crie um novo nome de jogador(a).' minlength='2' maxlength='25' required>" +
+                    "<input id='usuario_novo' type='text' name='usuario_novo' placeholder='Crie um novo nome de jogador(a).'" +
+                    " minlength='2' maxlength='25' autocomplete='off' required>" +
 
                 "</span>" +
 
                 "<span>" +
 
                     "<label for='senha_nova'> New Password: </label>" +
-                    "<input id='senha_nova' type='password' name='senha_nova' placeholder='Crie uma nova senha.' minlength='4' maxlength='20' required>" +
+                    "<input id='senha_nova' type='password' name='senha_nova' placeholder='Crie uma nova senha.'" +
+                    " minlength='4' maxlength='20' autocomplete='off' required>" +
 
                 "</span>" +
 
@@ -150,7 +157,8 @@ function mudar_formulario(valor)
                     "<span>" +
 
                         "<label for='chave'> Key: </label>" +
-                        "<input id='chave' type='password' name='chave' placeholder='Insira a senha mestra.' minlength='4' maxlength='20' required>" +
+                        "<input id='chave' type='password' name='chave' placeholder='Insira a senha mestra.'" +
+                        " minlength='4' maxlength='20' autocomplete='off' required>" +
 
                     "</span>" +
 
@@ -201,14 +209,16 @@ function mudar_formulario(valor)
                 "<span>" +
 
                     "<label for='usuario'> User Name: </label>" +
-                    "<input id='usuario' type='text' name='usuario' placeholder='Insira seu nome de jogador(a).' minlength='2' maxlength='25' required>" +
+                    "<input id='usuario' type='text' name='usuario' placeholder='Insira seu nome de jogador(a).'" +
+                    " minlength='2' maxlength='25' autocomplete='off' required>" +
 
                 "</span>" +
 
                 "<span>" +
 
                     "<label for='senha'> Password: </label>" +
-                    "<input id='senha' type='password' name='senha' placeholder='Insira sua senha.' minlength='4' maxlength='20' required>" +
+                    "<input id='senha' type='password' name='senha' placeholder='Insira sua senha.'" +
+                    " minlength='4' maxlength='20' autocomplete='off' required>" +
 
                 "</span>" +
 

@@ -16,15 +16,15 @@ switch($url)
     break;
 
     case "/form/save":
-        DataController::SaveData();
+        (count($_POST) > 0) ? DataController::SaveData() : header("Location: /form");
     break;
 
     case "/game":
-        DataController::LoadPage("Game");
+        (count($_SESSION) > 0) ? DataController::LoadPage("Game") : header("Location: /form");
     break;
 
     case "/game/save":
-        DataController::SaveGame();
+        (count($_SESSION) > 0) ? DataController::SaveGame() : header("Location: /form");
     break;
 
     case "/ranking":
@@ -33,6 +33,11 @@ switch($url)
 
     case "/generate_json":
         DataController::GenerateJSON();
+    break;
+
+    default:
+        http_response_code(404);
+        header("Location: /");
     break;
 
 }

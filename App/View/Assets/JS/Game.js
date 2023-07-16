@@ -318,3 +318,15 @@ function verificar_vitoria()
     }
 
 }
+
+function jogar_novamente()
+{
+
+    if(confirm("Realmente deseja jogar novamente? A pontuação atual será perdida."))
+    {
+
+        window.location.reload(true);
+
+    }
+
+}
