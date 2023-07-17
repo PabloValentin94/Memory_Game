@@ -1,25 +1,40 @@
-var quantidade_vezes_clicada = 0;
-
 function iniciar_video()
 {
 
-    quantidade_vezes_clicada++;
+    document.getElementById("video-button").style.display = "none";
 
-    if(quantidade_vezes_clicada == 1)
+    //document.getElementById("video-box").innerHTML = "<video id='video' height='100%' width='100%' autoplay> <source src='./Assets/Videos/Video_Abertura.mp4' type='video/mp4'> </video>";
+
+    document.getElementById("video").style.display = "flex";
+
+    document.getElementById("skip-video-button").style.display = "flex";
+
+    document.getElementById("video").play();
+
+    setTimeout(() => {
+
+        carregar_pagina_inicial();
+
+    }, Math.floor((document.getElementById("video").duration * 1000) + 1000));
+
+    // Tempo manual: 95000.
+
+}
+
+function carregar_pagina_inicial(video)
+{
+
+    if(video != null)
     {
 
-        document.getElementById("video-button").style.display = "none";
+        video.pause();
 
-        document.getElementById("video-box").innerHTML = '<video height="100%" width="100%" autoplay> <source src="./Assets/Videos/Video.mp4" type="video/mp4"> </video>'
-    
-        setTimeout(() => {
-    
-            document.getElementById("video-box").style.display = "none";
-        
-            document.getElementById("link-box").style.display = "flex";
-        
-        }, 95000);
-    
     }
+
+    document.getElementById("video-box").style.display = "none";
+
+    document.getElementById("skip-video-button").style.display = "none";
+    
+    document.getElementById("link-box").style.display = "flex";
 
 }

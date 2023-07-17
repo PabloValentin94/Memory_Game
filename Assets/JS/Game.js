@@ -207,9 +207,9 @@ function revelar_carta(id)
     
                 verificar_cartas_escolhidas();
             
-            }, 500);
+            }, 350);
     
-        }, 750);
+        }, 350);
 
     }
 
@@ -277,7 +277,7 @@ function verificar_cartas_escolhidas()
 
                 segunda_carta_escolhida = "";
 
-            }, 750);
+            }, 350);
 
         }
 
@@ -299,15 +299,33 @@ function verificar_vitoria()
 
             document.getElementById("container").style.display = "none";
 
-            document.getElementById("horas").innerText = verificar_digitos(horas.toString());
+            document.getElementById("hours").innerText = verificar_digitos(horas.toString());
 
-            document.getElementById("minutos").innerText = verificar_digitos(minutos.toString());
+            document.getElementById("minutes").innerText = verificar_digitos(minutos.toString());
 
-            document.getElementById("segundos").innerText = verificar_digitos(segundos.toString());
+            document.getElementById("seconds").innerText = verificar_digitos(segundos.toString());
 
             document.getElementById("time_banner").style.display = "flex";
 
+            const recorde = verificar_digitos(horas.toString()) + ":" +
+                            verificar_digitos(minutos.toString()) + ":" +
+                            verificar_digitos(segundos.toString());
+
+            document.getElementById("record").value = recorde;
+
         }, 1000);
+
+    }
+
+}
+
+function jogar_novamente()
+{
+
+    if(confirm("Realmente deseja jogar novamente?"))
+    {
+
+        window.location.reload(true);
 
     }
 

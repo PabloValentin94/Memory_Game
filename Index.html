@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="pt-br">
 
     <head>
         
@@ -10,7 +10,7 @@
         <link rel="icon" type="image/png" href="./Assets/Images/Favicon.png">
         <link rel="stylesheet" type="text/css" href="./Assets/CSS/Index.css">
 
-        <script defer type="text/javascript" src="./Assets/JS/Index.js"></script>
+        <script defer type="text/javascript" src="./Assets/JS/Index.js">  </script>
 
         <title> Blue Lock's Memory Game </title>
 
@@ -18,15 +18,21 @@
 
     <body oncontextmenu="return false">
 
-        <div id="video-box">
+        <div id="container">
 
-            <button id="video-button" onclick="iniciar_video()">  </button>
+            <div id="video-box">
 
-            <!--<video height="100%" width="100%" controls> <source src="./Assets/Videos/Video.mp4" type="video/mp4"> </video>-->
+                <button id="video-button" title="Iniciar vídeo de introdução." onclick="iniciar_video()">  </button>
+
+                <video id="video"> <source src="./Assets/Videos/Video_Abertura.mp4" type="video/mp4"> </video>
+                
+            </div>
+
+            <button id="skip-video-button" title="Pular vídeo de introdução." onclick="carregar_pagina_inicial(document.getElementById('video'))"> Pular vídeo </button>
+    
+            <div id="link-box"> <a title="Iniciar funcionamento da aplicação." href="./Game.html"> START </a> </div>
 
         </div>
-
-        <div id="link-box"> <a href="Game.html"> START </a> </div>
         
     </body>
 

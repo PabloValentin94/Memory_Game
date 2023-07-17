@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="pt-br">
 
     <head>
         
@@ -10,7 +10,7 @@
         <link rel="icon" type="image/png" href="./Assets/Images/Favicon.png">
         <link rel="stylesheet" type="text/css" href="./Assets/CSS/Game.css">
 
-        <script defer type="text/javascript" src="./Assets/JS/Game.js"></script>
+        <script defer type="text/javascript" src="./Assets/JS/Game.js">  </script>
 
         <title> (00:00:00) Game </title>
 
@@ -20,7 +20,7 @@
 
         <div id="initialization">
 
-            <button onclick="iniciar_jogo()">  </button>
+            <button title="Iniciar jogo." onclick="iniciar_jogo()">  </button>
 
         </div>
 
@@ -73,7 +73,7 @@
 
                 <p> <span style="font-size: 30px; font-weight: bolder;"> Seu tempo foi: </span> </p>
 
-                <p> <span id="horas" style="color: #00007D;">  </span> : <span id="minutos" style="color: #00007D;">  </span> : <span id="segundos" style="color: #00007D;">  </span> </p>
+                <p> <span id="hours" style="color: #00007D;">  </span> : <span id="minutes" style="color: #00007D;">  </span> : <span id="seconds" style="color: #00007D;">  </span> </p>
 
                 <!--<p> <span id="horas" style="color: #00007D;">  </span> hora(s) </p>
 
@@ -81,7 +81,7 @@
 
                 <p> <span id="segundos" style="color: #00007D;">  </span> segundo(s) </p>-->
 
-                <button onclick="window.location.reload(true);"> Recarregar Jogo </button>
+                <button title="Reiniciar jogo." onclick="jogar_novamente()"> Tentar Novamente </button>
 
             </div>
 

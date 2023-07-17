@@ -3,8 +3,8 @@
 * {
 
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
 
 }
@@ -35,7 +35,6 @@ body {
 
     height: 150px;
     width: 150px;
-    position: absolute;
     background-color: #00007D;
     border: 5px solid #000000;
     border-radius: 10px;
@@ -90,7 +89,7 @@ body {
     animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;*/
-    animation: reveal_card 0.75s 1 ease-in-out;
+    animation: reveal_card 0.35s 1 linear;
 
 }
 
@@ -100,7 +99,7 @@ body {
     animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;*/
-    animation: hidden_card 0.75s 1 ease-in-out;
+    animation: hidden_card 0.35s 1 linear;
 
 }
 
@@ -112,6 +111,10 @@ body {
     align-items: center;
     justify-content: center;
     background-color: transparent;
+    background-image: url("../Images/Victory.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 
 }
 
@@ -123,7 +126,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: #FFFFFF;
+    position: absolute;
+    top: 7.5%;
+    right: 5%;
+    background-color: rgba(255, 255, 255, 0.750);
     border: 5px solid #000000;
     border-radius: 10px;
 
