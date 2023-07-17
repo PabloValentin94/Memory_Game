@@ -424,7 +424,19 @@ class DataController extends Controller
                         md5($_POST["senha"]) == $item->senha)
                         {
 
-                            $condicao = 1;
+                            if($item->ativo == 0)
+                            {
+
+                                $condicao = 1;
+
+                            }
+
+                            else
+                            {
+
+                                $condicao = 2;
+
+                            }
 
                             break;
     
@@ -446,6 +458,14 @@ class DataController extends Controller
                         break;
 
                         case 1:
+
+                            echo "<script> alert('Este usuário está banido e, portanto, não pode jogar! Por favor, não insista.'); " .
+                                 "history.pushState(null,null,'http://localhost:8000/form'); " .
+                                 "window.location.reload(true); </script>";
+
+                        break;
+
+                        case 2:
 
                             $_SESSION["id_usuario"] = $usuarios[$id_array]->id;
     

@@ -18,7 +18,12 @@ window.onload = () => {
             for(var i = 0; i < listagem_jogadores.length; i++)
             {
 
-                lista_jogadores.push({"id": listagem_jogadores[i].id, "usuario": listagem_jogadores[i].usuario});
+                if(listagem_jogadores[i].ativo == 1)
+                {
+
+                    lista_jogadores.push({"id": listagem_jogadores[i].id, "usuario": listagem_jogadores[i].usuario});
+
+                }
     
             }
 
@@ -88,51 +93,65 @@ function mudar_formulario(valor)
 
             document.getElementById("choice").style.width = "550px";
 
-            const form_edicao = 
+            if(lista_jogadores.length > 0)
+            {
+
+                const form_edicao = 
             
-            "<div id='edicao'>" +
+                "<div id='edicao'>" +
+    
+                    "<span>" +
+    
+                        "<label for='usuario'> User Name: </label>" +
+                        "<input id='usuario' type='text' name='usuario' placeholder='Insira seu atual nome de jogador(a).'" +
+                        " minlength='2' maxlength='25' autocomplete='off' required>" +
+    
+                    "</span>" +
+    
+                    "<span>" +
+    
+                        "<label for='senha'> Password: </label>" +
+                        "<input id='senha' type='password' name='senha' placeholder='Insira sua atual senha.'" +
+                        " minlength='4' maxlength='20' autocomplete='off' required>" +
+    
+                    "</span>" +
+    
+                    "<span>" +
+    
+                        "<label for='usuario_novo'> New User Name: </label>" +
+                        "<input id='usuario_novo' type='text' name='usuario_novo' placeholder='Crie um novo nome de jogador(a).'" +
+                        " minlength='2' maxlength='25' autocomplete='off' required>" +
+    
+                    "</span>" +
+    
+                    "<span>" +
+    
+                        "<label for='senha_nova'> New Password: </label>" +
+                        "<input id='senha_nova' type='password' name='senha_nova' placeholder='Crie uma nova senha.'" +
+                        " minlength='4' maxlength='20' autocomplete='off' required>" +
+    
+                    "</span>" +
+    
+                "</div>";
+    
+                document.getElementById("form").innerHTML = form_edicao;
+    
+                document.getElementById("botao").style.display = "flex";
+    
+                document.getElementById("botao").innerText = "Editar";
+    
+                document.getElementById("botao").ariaLabel = "Editar meu perfil do jogo.";
 
-                "<span>" +
+            }
 
-                    "<label for='usuario'> User Name: </label>" +
-                    "<input id='usuario' type='text' name='usuario' placeholder='Insira seu atual nome de jogador(a).'" +
-                    " minlength='2' maxlength='25' autocomplete='off' required>" +
+            else
+            {
 
-                "</span>" +
+                document.getElementById("form").innerHTML = "<p> Nenhum usuário encontrado. </p>";
 
-                "<span>" +
+                document.getElementById("botao").style.display = "none";
 
-                    "<label for='senha'> Password: </label>" +
-                    "<input id='senha' type='password' name='senha' placeholder='Insira sua atual senha.'" +
-                    " minlength='4' maxlength='20' autocomplete='off' required>" +
-
-                "</span>" +
-
-                "<span>" +
-
-                    "<label for='usuario_novo'> New User Name: </label>" +
-                    "<input id='usuario_novo' type='text' name='usuario_novo' placeholder='Crie um novo nome de jogador(a).'" +
-                    " minlength='2' maxlength='25' autocomplete='off' required>" +
-
-                "</span>" +
-
-                "<span>" +
-
-                    "<label for='senha_nova'> New Password: </label>" +
-                    "<input id='senha_nova' type='password' name='senha_nova' placeholder='Crie uma nova senha.'" +
-                    " minlength='4' maxlength='20' autocomplete='off' required>" +
-
-                "</span>" +
-
-            "</div>";
-
-            document.getElementById("form").innerHTML = form_edicao;
-
-            document.getElementById("botao").style.display = "flex";
-
-            document.getElementById("botao").innerText = "Editar";
-
-            document.getElementById("botao").ariaLabel = "Editar meu perfil do jogo."
+            }
 
         break;
 

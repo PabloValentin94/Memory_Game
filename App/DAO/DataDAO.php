@@ -70,7 +70,7 @@ class DataDAO extends DAO
     public function Select() : array
     {
 
-        $sql = "SELECT * FROM Player WHERE ativo = 1 ORDER BY recorde ASC, usuario ASC";
+        $sql = "SELECT * FROM Player ORDER BY recorde ASC, usuario ASC";
 
         $stmt = $this->conexao->prepare($sql);
 
@@ -85,7 +85,7 @@ class DataDAO extends DAO
 
         $parametro = [":filtro" => "%" . $valor_filtro . "%"];
 
-        $sql = "SELECT * FROM Player WHERE $valor_coluna LIKE :filtro AND ativo = 1 ORDER BY recorde ASC, usuario ASC";
+        $sql = "SELECT * FROM Player WHERE $valor_coluna LIKE :filtro ORDER BY recorde ASC, usuario ASC";
 
         $stmt = $this->conexao->prepare($sql);
 

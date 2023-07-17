@@ -26,7 +26,7 @@ function listagem_jogadores()
             for(var i = 0; i < lista_jogadores.length; i++)
             {
 
-                if(lista_jogadores[i].recorde != null)
+                if(lista_jogadores[i].ativo == 1 && lista_jogadores[i].recorde != null)
                 {
 
                     players.push({"usuario": lista_jogadores[i].usuario, "recorde": lista_jogadores[i].recorde});
