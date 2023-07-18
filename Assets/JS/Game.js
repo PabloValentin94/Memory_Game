@@ -307,12 +307,6 @@ function verificar_vitoria()
 
             document.getElementById("time_banner").style.display = "flex";
 
-            const recorde = verificar_digitos(horas.toString()) + ":" +
-                            verificar_digitos(minutos.toString()) + ":" +
-                            verificar_digitos(segundos.toString());
-
-            document.getElementById("record").value = recorde;
-
         }, 1000);
 
     }
