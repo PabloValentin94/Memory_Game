@@ -59,12 +59,12 @@ abstract class Controller
 
     }
 
-    protected static function CPF_Validation($valor) : int
+    protected static function CPF_Validation($value) : int
     {
 
         // Removendo símbolos especiais, caso exista, do CPF.
 
-        $cpf = str_replace([".", ",", "+", "-", "E", "e"], "", $valor);
+        $cpf = str_replace([".", ",", "+", "-", "E", "e"], "", $value);
 
         // Verificando quantidade de algarismos do CPF.
 
@@ -184,6 +184,41 @@ abstract class Controller
 
                 }
 
+            }
+
+        }
+
+    }
+
+    protected static function RecordVerification(string $old_record = null, string $new_record) : bool
+    {
+
+        if($old_record == null)
+        {
+
+            return true;
+
+        }
+
+        else
+        {
+
+            $recorde_atual = (int) str_replace(":", "", $old_record);
+
+            $recorde_novo = (int) str_replace(":", "", $new_record);
+    
+            if($recorde_novo < $recorde_atual)
+            {
+    
+                return true;
+    
+            }
+    
+            else
+            {
+    
+                return false;
+    
             }
 
         }

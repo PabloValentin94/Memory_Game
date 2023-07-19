@@ -29,7 +29,7 @@ class DataController extends Controller
         catch(Exception $ex)
         {
 
-            exit("Erro: " . $ex);
+            exit("Erro: " . $ex . "\n\n" . "Fonte: DataController->LoadPage()");
 
         }
 
@@ -202,7 +202,7 @@ class DataController extends Controller
         catch(Exception $ex)
         {
 
-            exit("Erro: " . $ex);
+            exit("Erro: " . $ex . "\n\n" . "Fonte: DataController->RegisterUser()");
 
         }
 
@@ -286,7 +286,7 @@ class DataController extends Controller
 
                         case 1:
 
-                            echo "<script> alert('Já existe um usuário com esse nome! Tente outra opção.'); " .
+                            echo "<script> alert('Já existe um usuário com este nome! Tente outra opção.'); " .
                                  "history.pushState(null,null,'http://localhost:8000/form'); " .
                                  "window.location.reload(true); </script>";
 
@@ -317,7 +317,7 @@ class DataController extends Controller
                 else
                 {
 
-                    echo "<script> alert('Esse usuário não existe! Verifique se você realmente está cadastrado.'); " .
+                    echo "<script> alert('Este usuário não existe! Verifique se você realmente está cadastrado.'); " .
                          "history.pushState(null,null,'http://localhost:8000/form'); " .
                          "window.location.reload(true); </script>";
 
@@ -330,7 +330,7 @@ class DataController extends Controller
         catch(Exception $ex)
         {
 
-            exit("Erro: " . $ex);
+            exit("Erro: " . $ex . "\n\n" . "Fonte: DataController->EditUser()");
 
         }
 
@@ -379,7 +379,7 @@ class DataController extends Controller
         catch(Exception $ex)
         {
 
-            exit("Erro: " . $ex);
+            exit("Erro: " . $ex . "\n\n" . "Fonte: DataController->DeactivateUser()");
 
         }
 
@@ -486,7 +486,7 @@ class DataController extends Controller
                 else
                 {
 
-                    echo "<script> alert('Esse usuário não existe! Verifique se você realmente está cadastrado.'); " .
+                    echo "<script> alert('Este usuário não existe! Verifique se você realmente está cadastrado.'); " .
                          "history.pushState(null,null,'http://localhost:8000/form'); " .
                          "window.location.reload(true); </script>";
 
@@ -499,7 +499,7 @@ class DataController extends Controller
         catch(Exception $ex)
         {
 
-            exit("Erro: " . $ex);
+            exit("Erro: " . $ex . "\n\n" . "Fonte: DataController->LoginUser()");
 
         }
 
@@ -545,7 +545,7 @@ class DataController extends Controller
         catch(Exception $ex)
         {
 
-            exit("Erro: " . $ex);
+            exit("Erro: " . $ex . "\n\n" . "Fonte: DataController->SaveData()");
 
         }
 
@@ -566,7 +566,7 @@ class DataController extends Controller
             if($jogador)
             {
 
-                if($jogador[0]->recorde == NULL || min([$jogador[0]->recorde, $_POST["recorde"]]) == $_POST["recorde"])
+                if(parent::RecordVerification($jogador[0]->recorde, $_POST["recorde"]))
                 {
 
                     $model->id = (int) $_SESSION["id_usuario"];
@@ -594,7 +594,7 @@ class DataController extends Controller
         catch(Exception $ex)
         {
 
-            exit("Erro: " . $ex);
+            exit("Erro: " . $ex . "\n\n" . "Fonte: DataController->SaveGame()");
 
         }
 
@@ -629,7 +629,7 @@ class DataController extends Controller
         catch(Exception $ex)
         {
 
-            exit("Erro: " . $ex);
+            exit("Erro: " . $ex . "\n\n" . "Fonte: DataController->GenerateJSON()");
 
         }
 
