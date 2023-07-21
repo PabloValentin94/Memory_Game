@@ -4,8 +4,6 @@ window.onload = () => {
 
     listagem_jogadores();
 
-    console.log(document.getElementById("usuario").value);
-
 }
 
 function listagem_jogadores()
