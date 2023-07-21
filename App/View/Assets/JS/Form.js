@@ -2,8 +2,6 @@ var lista_jogadores = [];
 
 window.onload = () => {
 
-    mudar_formulario("login");
-
     document.getElementById("botao").style.display = "flex";
 
     const requisicao = fetch("http://localhost:8000/generate_json");
@@ -25,6 +23,24 @@ window.onload = () => {
 
                 }
     
+            }
+
+            if(lista_jogadores.length > 0)
+            {
+
+                (document.getElementById("opcao").value = "login").selected = true;
+
+                mudar_formulario("login");
+
+            }
+
+            else
+            {
+
+                (document.getElementById("opcao").value = "cadastro").selected = true;
+
+                mudar_formulario("cadastro");
+
             }
 
         }
@@ -51,7 +67,7 @@ function mudar_formulario(valor)
 
                 "<label for='cpf'> CPF: </label>" +
                 "<input id='cpf' type='number' name='cpf' placeholder='Insira seu CPF.'" +
-                " min='10000000000' max='99999999999' autocomplete='off' required>" +
+                " min='00000000000' max='99999999999' autocomplete='off' required>" +
 
                 "</span>" +
 
@@ -85,7 +101,7 @@ function mudar_formulario(valor)
 
                 alert("Para evitar eventuais transtornos, insira apenas informações que pertençam a você.");
 
-            }, 100);
+            }, 150);
 
         break;
 
@@ -221,35 +237,49 @@ function mudar_formulario(valor)
 
             document.getElementById("choice").style.width = "450px";
 
-            const form_login = 
+            if(lista_jogadores.length > 0)
+            {
+
+                const form_login = 
             
-            "<div id='login'>" +
+                "<div id='login'>" +
 
-                "<span>" +
+                    "<span>" +
 
-                    "<label for='usuario'> User Name: </label>" +
-                    "<input id='usuario' type='text' name='usuario' placeholder='Insira seu nome de jogador(a).'" +
-                    " minlength='2' maxlength='25' autocomplete='off' required>" +
+                        "<label for='usuario'> User Name: </label>" +
+                        "<input id='usuario' type='text' name='usuario' placeholder='Insira seu nome de jogador(a).'" +
+                        " minlength='2' maxlength='25' autocomplete='off' required>" +
 
-                "</span>" +
+                    "</span>" +
 
-                "<span>" +
+                    "<span>" +
 
-                    "<label for='senha'> Password: </label>" +
-                    "<input id='senha' type='password' name='senha' placeholder='Insira sua senha.'" +
-                    " minlength='4' maxlength='20' autocomplete='off' required>" +
+                        "<label for='senha'> Password: </label>" +
+                        "<input id='senha' type='password' name='senha' placeholder='Insira sua senha.'" +
+                        " minlength='4' maxlength='20' autocomplete='off' required>" +
 
-                "</span>" +
+                    "</span>" +
 
-            "</div>";
+                "</div>";
 
-            document.getElementById("form").innerHTML = form_login;
+                document.getElementById("form").innerHTML = form_login;
 
-            document.getElementById("botao").style.display = "flex";
+                document.getElementById("botao").style.display = "flex";
 
-            document.getElementById("botao").innerText = "Entrar";
+                document.getElementById("botao").innerText = "Entrar";
 
-            document.getElementById("botao").ariaLabel = "Acessar o jogo utilizando meu perfil.";
+                document.getElementById("botao").ariaLabel = "Acessar o jogo utilizando meu perfil.";
+
+            }
+
+            else
+            {
+
+                document.getElementById("form").innerHTML = "<p> Nenhum usuário encontrado. </p>";
+
+                document.getElementById("botao").style.display = "none";
+
+            }
 
         break;
 

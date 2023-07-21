@@ -40,6 +40,16 @@
 
             </div>
 
+            <div id="search">
+
+                <label for="usuario"> Pesquisar: </label>
+                <input id="usuario" type="search" name="usuario" placeholder="Insira o nome de um usuário aqui para procurá-lo."
+                min="2" maxlength="25">
+
+                <button onclick="pesquisar_jogador(document.getElementById('usuario').value.trim())"> Procurar </button>
+
+            </div>
+
         </div>
         
     </body>

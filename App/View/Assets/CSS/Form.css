@@ -136,6 +136,7 @@ body {
 #form input:focus, #form select:focus {
 
     outline: 2px solid #00007D;
+    cursor: text;
 
 }
 

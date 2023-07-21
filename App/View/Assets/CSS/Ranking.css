@@ -79,21 +79,11 @@ body {
 
 }
 
-/*.logo {
-
-    height: 90%;
-    width: 10%;
-    background-image: url("../Images/Ranking_Ball.png");
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-
-}*/
-
 #table {
 
-    height: 80%;
+    height: auto;
     width: 90%;
+    max-height: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,7 +125,6 @@ body {
 #data tr th {
 
     height: 90%;
-    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,7 +138,6 @@ body {
 #data tr td {
 
     height: 90%;
-    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,5 +145,72 @@ body {
     font-weight: bold;
     color: #000000;
     cursor: text;
+    text-overflow: ellipsis;
     
+}
+
+#search {
+
+    height: 10%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.750);
+    border: 5px solid #000000;
+    border-radius: 10px;
+
+}
+
+#search label {
+
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: text;
+
+}
+
+#usuario {
+
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    font-size: 15px;
+    text-align: center;
+    color: #000000;
+    border: none;
+    border-radius: 2px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 5px;
+    outline: 1px solid #000000;
+    cursor: pointer;
+    
+}
+
+#usuario:focus {
+
+    outline: 2px solid #00007D;
+    cursor: text;
+
+}
+
+#search button {
+
+    height: auto;
+    width: auto;
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 5px;
+    cursor: pointer;
+
 }

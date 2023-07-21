@@ -248,8 +248,8 @@ class DataController extends Controller
                         if($_POST["usuario"] == $item->usuario &&
                         md5($_POST["senha"]) == $item->senha)
                         {
-        
-                            if($_POST["usuario_novo"] == $item->usuario)
+
+                            if($_POST["usuario_novo"] == $item->usuario && $_POST["usuario"] != $_POST["usuario_novo"])
                             {
 
                                 $condicao = 1;
@@ -587,7 +587,7 @@ class DataController extends Controller
 
             //unset($_SESSION["id_usuario"], $_SESSION["cpf"], $_SESSION["usuario"], $_SESSION["senha"]);
 
-            header("Location: /form");
+            header("Location: /");
 
         }
 
