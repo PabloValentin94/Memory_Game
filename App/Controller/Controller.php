@@ -241,8 +241,8 @@ abstract class Controller
     protected static function GenerateBackup() : void
     {
 
-        /* Observação: no comando exec são utilizadas simples, pois as aspas 
-           duplas são usadas nos nomes de diretórios que possuam espaços contidos neles. */
+        /* Observação: no comando exec são utilizadas aspas simples, pois as aspas 
+           duplas são usadas em nomes de diretórios que possuam espaços contidos dentro de si. */
 
         // Definindo a repartição utilizada.
 
