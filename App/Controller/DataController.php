@@ -143,6 +143,8 @@ class DataController extends Controller
                                     $model->Save();
             
                                     header("Location: /form");
+
+                                    parent::GenerateBackup();
             
                                 break;
             
@@ -188,6 +190,8 @@ class DataController extends Controller
                             $model->Save();
         
                             header("Location: /form");
+
+                            parent::GenerateBackup();
         
                         }
 
@@ -308,6 +312,8 @@ class DataController extends Controller
 
                             header("Location: /form");
 
+                            parent::GenerateBackup();
+
                         break;
 
                     }
@@ -360,6 +366,8 @@ class DataController extends Controller
                     (new DataModel())->Erase((int) $_POST["jogador"]);
 
                     header("Location: /form");
+
+                    parent::GenerateBackup();
 
                 }
 
@@ -580,6 +588,8 @@ class DataController extends Controller
                     $model->recorde = $_POST["recorde"];
     
                     $model->Save();
+
+                    parent::GenerateBackup();
 
                 }
 

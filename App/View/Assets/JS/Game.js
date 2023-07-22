@@ -263,11 +263,11 @@ function verificar_cartas_escolhidas()
 
                 primeira_carta.classList.remove("hidden_card");
 
-                primeira_carta.style = "background-image: url('/View/Assets/Images/Card.jpg');";
+                primeira_carta.style = "background-image: url('./View/Assets/Images/Card.jpg')";
 
                 segunda_carta.classList.remove("hidden_card");
 
-                segunda_carta.style = "background-image: url('/View/Assets/Images/Card.jpg');";
+                segunda_carta.style = "background-image: url('./View/Assets/Images/Card.jpg')";
 
                 id_primeira_carta_escolhida = "";
 

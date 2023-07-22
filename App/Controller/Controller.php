@@ -238,6 +238,83 @@ abstract class Controller
 
     }
 
+    protected static function GenerateBackup() : void
+    {
+
+        /* Observação: no comando exec são utilizadas simples, pois as aspas 
+           duplas são usadas nos nomes de diretórios que possuam espaços contidos neles. */
+
+        // Definindo a repartição utilizada.
+
+        $reparticao = "C:";
+
+        // Acessando a repartição definida.
+
+        exec($reparticao);
+
+        // Criando a pasta, caso não exista, onde os arquivos de backup serão salvos.
+
+        if(!is_dir("$reparticao\Memory_Game_bl_Backup"))
+        {
+
+            exec('md ' . $reparticao . '\Memory_Game_bl_Backup');
+
+        }
+
+        // Definindo o fuso-horário brasileiro.
+
+        date_default_timezone_set("America/Sao_Paulo");
+
+        // Criando uma pasta, caso não exista, para os arquivos de backup do dia atual.
+
+        $data_atual = strval(date("Y-m-d"));
+
+        if(!is_dir("$reparticao\Memory_Game_bl_Backup\\" . $data_atual))
+        {
+
+            exec('md ' . $reparticao . '\Memory_Game_bl_Backup\\' . $data_atual);
+
+        }
+
+        // Criando uma pasta para os arquivos de backup do momento em esta função é acionada.
+
+        $hora_atual = strval(date("H-i-s"));
+
+        exec('md ' . $reparticao . '\Memory_Game_bl_Backup\\' . $data_atual . "\\" . $hora_atual);
+
+        /*// Apagando os arquivos de backup já existentes, se houverem, para que os novos sejam criados.
+
+        if(file_exists("$reparticao\Memory_Game_bl_Backup\Full_Backup.sql"))
+        {
+
+            exec('del ' . $reparticao . '\Memory_Game_bl_Backup\Full_Backup.sql');
+
+        }
+
+        if(file_exists("$reparticao\Memory_Game_bl_Backup\Structure_Backup.sql"))
+        {
+
+            exec('del ' . $reparticao . '\Memory_Game_bl_Backup\Structure_Backup.sql');
+
+        }
+
+        if(file_exists("$reparticao\Memory_Game_bl_Backup\Data_Backup.sql"))
+        {
+
+            exec('del ' . $reparticao . '\Memory_Game_bl_Backup\Data_Backup.sql');
+
+        }*/
+
+        // Criando os arquivos de backup.
+
+        exec('C:\"Program Files"\MySQL\"MySQL Server 8.0"\bin\mysqldump -h' . substr($_ENV["database"]["host"], 0, 9) . ' -P' . substr($_ENV["database"]["host"], 10, 4) . ' -u' . $_ENV["database"]["user"] . ' -p' . $_ENV["database"]["password"] . ' ' . $_ENV["database"]["db_name"] . ' --databases > ' . $reparticao . '\Memory_Game_bl_Backup\\' . $data_atual . '\\' . $hora_atual . "\\" . 'Full_Backup.sql');
+
+        exec('C:\"Program Files"\MySQL\"MySQL Server 8.0"\bin\mysqldump -h' . substr($_ENV["database"]["host"], 0, 9) . ' -P' . substr($_ENV["database"]["host"], 10, 4) . ' -u' . $_ENV["database"]["user"] . ' -p' . $_ENV["database"]["password"] . ' ' . $_ENV["database"]["db_name"] . ' --no-data --databases > ' . $reparticao . '\Memory_Game_bl_Backup\\' . $data_atual . '\\' . $hora_atual . "\\" . 'Structure_Backup.sql');
+
+        exec('C:\"Program Files"\MySQL\"MySQL Server 8.0"\bin\mysqldump -h' . substr($_ENV["database"]["host"], 0, 9) . ' -P' . substr($_ENV["database"]["host"], 10, 4) . ' -u' . $_ENV["database"]["user"] . ' -p' . $_ENV["database"]["password"] . ' ' . $_ENV["database"]["db_name"] . ' --no-create-info --databases > ' . $reparticao . '\Memory_Game_bl_Backup\\' . $data_atual . '\\' . $hora_atual . "\\" . 'Data_Backup.sql');
+
+    }
+
 }
 
 ?>

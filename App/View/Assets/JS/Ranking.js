@@ -26,13 +26,17 @@ function listagem_jogadores()
         if(lista_jogadores != "Nada a retornar.")
         {
 
+            var posicao = 0;
+
             for(var i = 0; i < lista_jogadores.length; i++)
             {
 
                 if(lista_jogadores[i].ativo == 1 && lista_jogadores[i].recorde != null)
                 {
 
-                    players.push({"posicao": (i + 1).toString(), "usuario": lista_jogadores[i].usuario, "recorde": lista_jogadores[i].recorde});
+                    posicao++;
+
+                    players.push({"posicao": posicao.toString(), "usuario": lista_jogadores[i].usuario, "recorde": lista_jogadores[i].recorde});
 
                 }
     

@@ -1,0 +1,23 @@
+Parâmetros - mysqldump:
+
+    -h: "endereço" da conexão. Exemplo: localhost.
+
+    -u: usuário. Exemplo: root.
+
+    -P: porta da conexão. Exemplo: 3307.
+
+    -p: senha. Exemplo: etecjau.
+
+Observação - mysqldump: Não devem haver espaços entre os parâmetros e seus respectivos valores. Exemplo:
+
+    Incorreto: -u root
+
+    Correto: -uroot
+
+Complementos - mysqldump:
+
+    --databases: adiciona CREATE DATABASE e USE DATABASE ao arquivo de backup.
+
+    --no-create-info: adiciona somente os registros, do banco de dados selecionado, ao arquivo de backup.
+
+    --no-data: adiciona somente a estrutura base, do banco de dados selecionado, ao arquivo de backup.
