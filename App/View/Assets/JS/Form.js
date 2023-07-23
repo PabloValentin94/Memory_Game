@@ -45,6 +45,15 @@ window.onload = () => {
 
         }
 
+        else
+        {
+
+            (document.getElementById("opcao").value = "cadastro").selected = true;
+
+            mudar_formulario("cadastro");
+            
+        }
+
     });
 
 }
