@@ -19,7 +19,23 @@ function listagem_jogadores()
 
     const requisicao = fetch("http://localhost:8000/generate_json");
 
-    const json = requisicao.then(retorno => { return retorno.json(); });
+    const json = requisicao.then(retorno => {
+
+        if(retorno.ok)
+        {
+
+            return retorno.json();
+
+        }
+
+        else
+        {
+
+            return "Nada a retornar.";
+
+        }
+
+    });
 
     json.then(lista_jogadores => {
 
@@ -76,12 +92,19 @@ function listagem_jogadores()
 
                     linha += players[i].recorde + " </td> </tr> </tbody>";
 
-                    tabela_jogadores.innerHTML += linha;
-
-                    if(document.getElementById("table").offsetHeight + 50 > document.body.offsetHeight * 0.70)
+                    if(document.getElementById("data").offsetHeight + 50 > document.body.offsetHeight * 0.70)
                     {
 
+                        tabela_jogadores.innerHTML += linha;
+
                         break;
+
+                    }
+
+                    else
+                    {
+
+                        tabela_jogadores.innerHTML += linha;
 
                     }
         

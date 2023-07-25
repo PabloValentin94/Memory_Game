@@ -1,6 +1,10 @@
 <?php
 
+// Namespace desta classe.
+
 namespace App\Controller;
+
+// Namespaces utilizados nesta classe.
 
 use App\Model\DataModel;
 

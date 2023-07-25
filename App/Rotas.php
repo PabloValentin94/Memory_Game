@@ -1,8 +1,14 @@
 <?php
 
+// Namespaces utilizados nesta classe.
+
 use App\Controller\DataController;
 
+// Obtendo a url atual.
+
 $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+
+// Executando ações de acordo com a url retornada.
 
 switch($url)
 {

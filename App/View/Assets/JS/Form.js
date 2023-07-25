@@ -6,7 +6,23 @@ window.onload = () => {
 
     const requisicao = fetch("http://localhost:8000/generate_json");
 
-    const json = requisicao.then(retorno => { return retorno.json(); });
+    const json = requisicao.then(retorno => {
+
+        if(retorno.ok)
+        {
+
+            return retorno.json();
+
+        }
+
+        else
+        {
+
+            return "Nada a retornar.";
+
+        }
+
+    });
 
     json.then(listagem_jogadores => {
 

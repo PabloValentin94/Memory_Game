@@ -1,6 +1,10 @@
 <?php
 
+// Namespace desta classe.
+
 namespace App\Model;
+
+// Namespaces utilizados nesta classe.
 
 use App\DAO\DataDAO;
 

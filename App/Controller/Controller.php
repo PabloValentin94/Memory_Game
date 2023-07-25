@@ -1,5 +1,7 @@
 <?php
 
+// Namespace desta classe.
+
 namespace App\Controller;
 
 abstract class Controller
