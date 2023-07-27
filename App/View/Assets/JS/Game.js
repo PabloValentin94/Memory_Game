@@ -168,6 +168,8 @@ function revelar_carta(id)
     if(condicao == false)
     {
 
+        document.body.style.pointerEvents = "all";
+
         const carta_selecionada = document.getElementById(id);
 
         carta_selecionada.classList.add("reveal_card");
@@ -206,6 +208,10 @@ function revelar_carta(id)
             setTimeout(() => {
     
                 verificar_cartas_escolhidas();
+
+                document.body.style.pointerEvents = "all";
+
+                document.body.style.cursor = "pointer";
             
             }, 350);
     
