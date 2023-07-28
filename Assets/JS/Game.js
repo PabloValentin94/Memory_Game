@@ -168,6 +168,8 @@ function revelar_carta(id)
     if(condicao == false)
     {
 
+        document.body.style.pointerEvents = "none";
+
         const carta_selecionada = document.getElementById(id);
 
         carta_selecionada.classList.add("reveal_card");
@@ -203,13 +205,13 @@ function revelar_carta(id)
     
             }
     
-            setTimeout(() => {
+            verificar_cartas_escolhidas();
+
+            document.body.style.pointerEvents = "all";
+
+            document.body.style.cursor = "pointer";
     
-                verificar_cartas_escolhidas();
-            
-            }, 350);
-    
-        }, 350);
+        }, 300);
 
     }
 
@@ -277,7 +279,7 @@ function verificar_cartas_escolhidas()
 
                 segunda_carta_escolhida = "";
 
-            }, 350);
+            }, 250);
 
         }
 

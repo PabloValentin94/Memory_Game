@@ -13,9 +13,13 @@ function iniciar_video()
 
     setTimeout(() => {
 
-        carregar_pagina_inicial();
+        setTimeout(() => {
 
-    }, Math.floor((document.getElementById("video").duration * 1000) + 1000));
+            carregar_pagina_inicial();
+
+        }, Math.floor(document.getElementById("video").duration * 1000));
+
+    }, 1000);
 
     // Tempo manual: 95000.
 
