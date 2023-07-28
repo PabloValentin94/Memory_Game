@@ -168,7 +168,7 @@ function revelar_carta(id)
     if(condicao == false)
     {
 
-        document.body.style.pointerEvents = "all";
+        document.body.style.pointerEvents = "none";
 
         const carta_selecionada = document.getElementById(id);
 
