@@ -204,18 +204,14 @@ function revelar_carta(id)
                 }
     
             }
-    
-            setTimeout(() => {
-    
-                verificar_cartas_escolhidas();
 
-                document.body.style.pointerEvents = "all";
+            verificar_cartas_escolhidas();
 
-                document.body.style.cursor = "pointer";
-            
-            }, 350);
+            document.body.style.pointerEvents = "all";
+
+            document.body.style.cursor = "pointer";
     
-        }, 350);
+        }, 300);
 
     }
 
@@ -283,7 +279,7 @@ function verificar_cartas_escolhidas()
 
                 segunda_carta_escolhida = "";
 
-            }, 350);
+            }, 250);
 
         }
 
