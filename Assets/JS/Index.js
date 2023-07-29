@@ -17,7 +17,7 @@ function iniciar_video()
 
             carregar_pagina_inicial();
 
-        }, Math.floor(document.getElementById("video").duration * 1000));
+        }, Math.floor((document.getElementById("video").duration * 1000) + 1000));
 
     }, 1000);
 
