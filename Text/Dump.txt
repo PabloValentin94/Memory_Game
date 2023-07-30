@@ -21,3 +21,7 @@ Complementos - mysqldump:
     --no-create-info: adiciona somente os registros, do banco de dados selecionado, ao arquivo de backup.
 
     --no-data: adiciona somente a estrutura base, do banco de dados selecionado, ao arquivo de backup.
+
+Sintaxe (CMD):
+
+    "Caminho até a pasta bin do MySQL">mysqldump -hlocalhost -P3307 -uroot -petecjau "Nome do banco de dados" --databases > "Caminho até a pasta onde o arquivo gerado será salvo"\"Nome para o arquivo".sql

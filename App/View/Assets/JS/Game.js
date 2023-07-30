@@ -49,7 +49,9 @@ window.onload = () => {
 
         // Math.random: gera um número real maior ou igual a 0 e menor que 1. Exemplo: 0,572.
 
-        // Math.floor: pega a parte inteira de um número real. Exemplo: 6,800 -> 6.
+        // Math.floor: arredonda para baixo. Exemplo: 6,800 -> 6.
+
+        // Math.ceil: arredonda para cima. Exemplo: 6,800 -> 7.
 
         const numero_aleatorio = Math.floor(Math.random() * 12);
 

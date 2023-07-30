@@ -50,9 +50,9 @@ class DataController extends Controller
                parent::InputVerification($_POST["senha"]))
             {
 
-                echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
+                exit("<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
                      "history.pushState(null,null,'http://localhost:8000/form'); " .
-                     "window.location.reload(true); </script>";
+                     "window.location.reload(true); </script>");
 
             }
 
@@ -64,25 +64,25 @@ class DataController extends Controller
 
                     case 0:
 
-                        echo "<script> alert('Um CPF deve conter 11 algarismos! Revise seus dados e tente novamente.'); " .
-                        "history.pushState(null,null,'http://localhost:8000/form'); " .
-                        "window.location.reload(true); </script>";
+                        exit("<script> alert('Um CPF deve conter 11 algarismos! Revise seus dados e tente novamente.'); " .
+                             "history.pushState(null,null,'http://localhost:8000/form'); " .
+                             "window.location.reload(true); </script>");
 
                     break;
 
                     case 1:
 
-                        echo "<script> alert('CPFs cujos algarismos são todos iguais, são automaticamente inválidos! Revise seus dados e tente novamente.'); " .
-                        "history.pushState(null,null,'http://localhost:8000/form'); " .
-                        "window.location.reload(true); </script>";
+                        exit("<script> alert('CPFs cujos algarismos são todos iguais, são automaticamente inválidos! Revise seus dados e tente novamente.'); " .
+                             "history.pushState(null,null,'http://localhost:8000/form'); " .
+                             "window.location.reload(true); </script>");
 
                     break;
 
                     case 2:
 
-                        echo "<script> alert('CPF inválido! Revise seus dados e tente novamente.'); " .
-                        "history.pushState(null,null,'http://localhost:8000/form'); " .
-                        "window.location.reload(true); </script>";
+                        exit("<script> alert('CPF inválido! Revise seus dados e tente novamente.'); " .
+                             "history.pushState(null,null,'http://localhost:8000/form'); " .
+                             "window.location.reload(true); </script>");
 
                     break;
 
@@ -154,25 +154,25 @@ class DataController extends Controller
             
                                 case 1:
             
-                                    echo "<script> alert('Este Usuário e CPF já estão cadastrados! Tente outras opções.'); " .
+                                    exit("<script> alert('Este Usuário e CPF já estão cadastrados! Tente outras opções.'); " .
                                          "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                         "window.location.reload(true); </script>";
+                                         "window.location.reload(true); </script>");
             
                                 break;
             
                                 case 2:
             
-                                    echo "<script> alert('Este Usuário já está cadastrado! Tente outra opção.'); " .
+                                    exit("<script> alert('Este Usuário já está cadastrado! Tente outra opção.'); " .
                                          "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                         "window.location.reload(true); </script>";
+                                         "window.location.reload(true); </script>");
             
                                 break;
             
                                 case 3:
             
-                                    echo "<script> alert('Este CPF já está cadastrado! Tente outra opção.'); " .
+                                    exit("<script> alert('Este CPF já está cadastrado! Tente outra opção.'); " .
                                          "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                         "window.location.reload(true); </script>";
+                                         "window.location.reload(true); </script>");
             
                                 break;
             
@@ -228,9 +228,9 @@ class DataController extends Controller
                parent::InputVerification($_POST["senha_nova"]))
             {
 
-                echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
+                exit("<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
                      "history.pushState(null,null,'http://localhost:8000/form'); " .
-                     "window.location.reload(true); </script>";
+                     "window.location.reload(true); </script>");
 
             }
 
@@ -286,17 +286,17 @@ class DataController extends Controller
 
                         case 0:
 
-                            echo "<script> alert('Usuário ou senha incorretos! Revise seus dados e tente novamente.'); " .
+                            exit("<script> alert('Usuário ou senha incorretos! Revise seus dados e tente novamente.'); " .
                                  "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                 "window.location.reload(true); </script>";
+                                 "window.location.reload(true); </script>");
 
                         break;
 
                         case 1:
 
-                            echo "<script> alert('Já existe um usuário com este nome! Tente outra opção.'); " .
+                            exit("<script> alert('Já existe um usuário com este nome! Tente outra opção.'); " .
                                  "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                 "window.location.reload(true); </script>";
+                                 "window.location.reload(true); </script>");
 
                         break;
 
@@ -327,9 +327,9 @@ class DataController extends Controller
                 else
                 {
 
-                    echo "<script> alert('Este usuário não existe! Verifique se você realmente está cadastrado.'); " .
+                    exit("<script> alert('Este usuário não existe! Verifique se você realmente está cadastrado.'); " .
                          "history.pushState(null,null,'http://localhost:8000/form'); " .
-                         "window.location.reload(true); </script>";
+                         "window.location.reload(true); </script>");
 
                 }
 
@@ -355,9 +355,9 @@ class DataController extends Controller
             if(parent::InputVerification($_POST["chave"]))
             {
 
-                echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
+                exit("<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
                      "history.pushState(null,null,'http://localhost:8000/form'); " .
-                     "window.location.reload(true); </script>";
+                     "window.location.reload(true); </script>");
 
             }
 
@@ -378,9 +378,9 @@ class DataController extends Controller
                 else
                 {
 
-                    echo "<script> alert('Senha mestra incorreta! Tente novamente.'); " .
+                    exit("<script> alert('Senha mestra incorreta! Tente novamente.'); " .
                          "history.pushState(null,null,'http://localhost:8000/form'); " .
-                         "window.location.reload(true); </script>";
+                         "window.location.reload(true); </script>");
 
                 }
 
@@ -407,9 +407,9 @@ class DataController extends Controller
                parent::InputVerification($_POST["senha"]))
             {
 
-                echo "<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
+                exit("<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
                      "history.pushState(null,null,'http://localhost:8000/form'); " .
-                     "window.location.reload(true); </script>";
+                     "window.location.reload(true); </script>");
 
             }
 
@@ -463,17 +463,17 @@ class DataController extends Controller
 
                         case 0:
 
-                            echo "<script> alert('Usuário ou senha incorretos! Revise seus dados e tente novamente.'); " .
+                            exit("<script> alert('Usuário ou senha incorretos! Revise seus dados e tente novamente.'); " .
                                  "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                 "window.location.reload(true); </script>";
+                                 "window.location.reload(true); </script>");
 
                         break;
 
                         case 1:
 
-                            echo "<script> alert('Este usuário está banido e, portanto, não pode jogar! Por favor, não insista.'); " .
+                            exit("<script> alert('Este usuário está banido e, portanto, não pode jogar! Por favor, não insista.'); " .
                                  "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                 "window.location.reload(true); </script>";
+                                 "window.location.reload(true); </script>");
 
                         break;
 
@@ -498,9 +498,9 @@ class DataController extends Controller
                 else
                 {
 
-                    echo "<script> alert('Este usuário não existe! Verifique se você realmente está cadastrado.'); " .
+                    exit("<script> alert('Este usuário não existe! Verifique se você realmente está cadastrado.'); " .
                          "history.pushState(null,null,'http://localhost:8000/form'); " .
-                         "window.location.reload(true); </script>";
+                         "window.location.reload(true); </script>");
 
                 }
 
