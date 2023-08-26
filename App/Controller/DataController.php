@@ -45,9 +45,7 @@ class DataController extends Controller
         try
         {
 
-            if(parent::InputVerification($_POST["cpf"]) ||
-               parent::InputVerification($_POST["usuario"]) ||
-               parent::InputVerification($_POST["senha"]))
+            if(parent::InputVerification($_POST["usuario"]) || parent::InputVerification($_POST["senha"]))
             {
 
                 exit("<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
@@ -59,147 +57,72 @@ class DataController extends Controller
             else
             {
 
-                switch(parent::CPF_Validation($_POST["cpf"]))
+                $model = new DataModel();
+
+                $model->GetData();
+
+                $usuarios = $model->dados;
+
+                if($usuarios)
                 {
 
-                    case 0:
+                    $condicao = 0;
 
-                        exit("<script> alert('Um CPF deve conter 11 algarismos! Revise seus dados e tente novamente.'); " .
-                             "history.pushState(null,null,'http://localhost:8000/form'); " .
-                             "window.location.reload(true); </script>");
-
-                    break;
-
-                    case 1:
-
-                        exit("<script> alert('CPFs cujos algarismos são todos iguais, são automaticamente inválidos! Revise seus dados e tente novamente.'); " .
-                             "history.pushState(null,null,'http://localhost:8000/form'); " .
-                             "window.location.reload(true); </script>");
-
-                    break;
-
-                    case 2:
-
-                        exit("<script> alert('CPF inválido! Revise seus dados e tente novamente.'); " .
-                             "history.pushState(null,null,'http://localhost:8000/form'); " .
-                             "window.location.reload(true); </script>");
-
-                    break;
-
-                    case 3:
-
-                        $model = new DataModel();
-
-                        $model->GetData();
-        
-                        $usuarios = $model->dados;
-        
-                        if($usuarios)
+                    foreach($usuarios as $item)
+                    {
+    
+                        if($item->usuario == $_POST["usuario"])
                         {
-        
-                            $condicao = 0;
-        
-                            foreach($usuarios as $item)
-                            {
-            
-                                if($item->usuario == $_POST["usuario"] && $item->cpf == $_POST["cpf"])
-                                {
-            
-                                    $condicao = 1;
-            
-                                    break;
-            
-                                }
-            
-                                else if($item->usuario == $_POST["usuario"])
-                                {
-            
-                                    $condicao = 2;
-            
-                                    break;
-            
-                                }
-            
-                                else if($item->cpf == $_POST["cpf"])
-                                {
-            
-                                    $condicao = 3;
-            
-                                    break;
-            
-                                }
-            
-                            }
-            
-                            switch($condicao)
-                            {
-        
-                                case 0:
-            
-                                    $simbolos_especiais = [".", ",", "+", "-", "E", "e"];
-            
-                                    $model->cpf = trim(str_replace($simbolos_especiais, "", $_POST["cpf"]));
-                        
-                                    $model->usuario = trim($_POST["usuario"]);
-                        
-                                    $model->senha = md5(trim($_POST["senha"]));
-            
-                                    $model->Save();
-            
-                                    header("Location: /form");
-
-                                    parent::GenerateBackup();
-            
-                                break;
-            
-                                case 1:
-            
-                                    exit("<script> alert('Este Usuário e CPF já estão cadastrados! Tente outras opções.'); " .
-                                         "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                         "window.location.reload(true); </script>");
-            
-                                break;
-            
-                                case 2:
-            
-                                    exit("<script> alert('Este Usuário já está cadastrado! Tente outra opção.'); " .
-                                         "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                         "window.location.reload(true); </script>");
-            
-                                break;
-            
-                                case 3:
-            
-                                    exit("<script> alert('Este CPF já está cadastrado! Tente outra opção.'); " .
-                                         "history.pushState(null,null,'http://localhost:8000/form'); " .
-                                         "window.location.reload(true); </script>");
-            
-                                break;
-            
-                            }
-        
+    
+                            $condicao = 1;
+    
+                            break;
+    
                         }
-        
-                        else
-                        {
-        
-                            $simbolos_especiais = [".", ",", "+", "-", "E", "e"];
-            
-                            $model->cpf = trim(str_replace($simbolos_especiais, "", $_POST["cpf"]));
+    
+                    }
+    
+                    switch($condicao)
+                    {
+
+                        case 0:
                 
                             $model->usuario = trim($_POST["usuario"]);
                 
                             $model->senha = md5(trim($_POST["senha"]));
-        
+    
                             $model->Save();
-        
+    
                             header("Location: /form");
 
                             parent::GenerateBackup();
-        
-                        }
+    
+                        break;
+    
+                        case 1:
+    
+                            exit("<script> alert('Este Usuário já está cadastrado! Tente outra opção.'); " .
+                                 "history.pushState(null,null,'http://localhost:8000/form'); " .
+                                 "window.location.reload(true); </script>");
+    
+                        break;
+    
+                    }
 
-                    break;
+                }
+
+                else
+                {
+        
+                    $model->usuario = trim($_POST["usuario"]);
+        
+                    $model->senha = md5(trim($_POST["senha"]));
+
+                    $model->Save();
+
+                    header("Location: /form");
+
+                    parent::GenerateBackup();
 
                 }
 
@@ -222,10 +145,8 @@ class DataController extends Controller
         try
         {
 
-            if(parent::InputVerification($_POST["usuario"]) ||
-               parent::InputVerification($_POST["senha"]) ||
-               parent::InputVerification($_POST["usuario_novo"]) ||
-               parent::InputVerification($_POST["senha_nova"]))
+            if(parent::InputVerification($_POST["usuario"]) || parent::InputVerification($_POST["senha"]) ||
+               parent::InputVerification($_POST["usuario_novo"]) || parent::InputVerification($_POST["senha_nova"]))
             {
 
                 exit("<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
@@ -303,8 +224,6 @@ class DataController extends Controller
                         case 2:
 
                             $model->id = (int) $usuarios[$id_array]->id;
-
-                            $model->cpf = $usuarios[$id_array]->cpf;
 
                             $model->usuario = trim($_POST["usuario_novo"]);
             
@@ -403,8 +322,7 @@ class DataController extends Controller
         try
         {
 
-            if(parent::InputVerification($_POST["usuario"]) ||
-               parent::InputVerification($_POST["senha"]))
+            if(parent::InputVerification($_POST["usuario"]) || parent::InputVerification($_POST["senha"]))
             {
 
                 exit("<script> alert('Não são permitidos campos preenchidos somente com espaços! Revise seus dados e tente novamente.'); " .
@@ -582,8 +500,6 @@ class DataController extends Controller
                 {
 
                     $model->id = (int) $_SESSION["id_usuario"];
-
-                    $model->cpf = $_SESSION["cpf"];
         
                     $model->usuario = $_SESSION["usuario"];
         

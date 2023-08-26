@@ -248,7 +248,7 @@ abstract class Controller
 
         // Definindo a repartição utilizada.
 
-        $reparticao = "C:";
+        $reparticao = BACKUP;
 
         // Acessando a repartição definida.
 

@@ -151,16 +151,6 @@ body {
 
 }
 
-#cadastro span {
-
-    height: 30%;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-}
-
 #edicao span {
 
     height: 22.5%;
@@ -171,19 +161,13 @@ body {
 
 }
 
-#cadastro span label, #cadastro span input {
-
-    height: 60%;
-
-}
-
 #edicao span label, #edicao span input {
 
     height: 80%;
 
 }
 
-#banimento span, #login span {
+#cadastro span, #banimento span, #login span {
 
     height: 45%;
     width: 90%;
@@ -193,7 +177,7 @@ body {
 
 }
 
-#banimento span label, #banimento span select, #login span label, #login span input {
+#cadastro span label, #cadastro span input, #banimento span label, #banimento span select, #login span label, #login span input {
 
     height: 40%;
 

@@ -21,15 +21,13 @@ class DataDAO extends DAO
     public function Insert(DataModel $model) : bool
     {
 
-        $sql = "INSERT INTO Player(cpf, usuario, senha) VALUES(?, ?, ?)";
+        $sql = "INSERT INTO Player(usuario, senha) VALUES(?, ?)";
 
         $stmt = $this->conexao->prepare($sql);
 
-        $stmt->bindValue(1, $model->cpf);
+        $stmt->bindValue(1, $model->usuario);
 
-        $stmt->bindValue(2, $model->usuario);
-
-        $stmt->bindValue(3, $model->senha);
+        $stmt->bindValue(2, $model->senha);
 
         return $stmt->execute();
 
@@ -38,19 +36,17 @@ class DataDAO extends DAO
     public function Update(DataModel $model) : bool
     {
 
-        $sql = "UPDATE Player SET cpf = ?, usuario = ?, senha = ?, recorde = ? WHERE id = ?";
+        $sql = "UPDATE Player SET usuario = ?, senha = ?, recorde = ? WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
 
-        $stmt->bindValue(1, $model->cpf);
+        $stmt->bindValue(1, $model->usuario);
 
-        $stmt->bindValue(2, $model->usuario);
+        $stmt->bindValue(2, $model->senha);
 
-        $stmt->bindValue(3, $model->senha);
+        $stmt->bindValue(3, $model->recorde);
 
-        $stmt->bindValue(4, $model->recorde);
-
-        $stmt->bindValue(5, $model->id);
+        $stmt->bindValue(4, $model->id);
 
         return $stmt->execute();
 

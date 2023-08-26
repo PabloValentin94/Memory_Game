@@ -6,6 +6,8 @@ define("BASEDIR", dirname(__FILE__, 2) . "\\");
 
 define("VIEWS", dirname(__FILE__) . "/View/Modules/");
 
+define("BACKUP", "C:");
+
 // Senha Mestra.
 
 define("MASTER", "a6facc54aeeb0ee2d5e0c01d17074b77");

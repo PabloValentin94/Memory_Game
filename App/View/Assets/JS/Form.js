@@ -90,14 +90,6 @@ function mudar_formulario(valor)
 
                 "<span>" +
 
-                "<label for='cpf'> CPF: </label>" +
-                "<input id='cpf' type='number' name='cpf' placeholder='Insira seu CPF.'" +
-                " min='00000000000' max='99999999999' autocomplete='off' required>" +
-
-                "</span>" +
-
-                "<span>" +
-
                     "<label for='usuario'> User Name: </label>" +
                     "<input id='usuario' type='text' name='usuario' placeholder='Crie um nome de jogador(a).'" +
                     " minlength='2' maxlength='25' autocomplete='off' required>" +
@@ -122,11 +114,11 @@ function mudar_formulario(valor)
 
             document.getElementById("botao").ariaLabel = "Criar meu perfil no jogo.";
 
-            setTimeout(() => {
+            /*setTimeout(() => {
 
                 alert("Para evitar eventuais transtornos, insira apenas informações que pertençam a você.");
 
-            }, 150);
+            }, 150);*/
 
         break;
 

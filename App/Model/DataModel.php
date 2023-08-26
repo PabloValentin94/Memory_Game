@@ -11,7 +11,7 @@ use App\DAO\DataDAO;
 class DataModel extends Model
 {
 
-    public $id, $cpf, $usuario, $senha, $recorde, $ativo;
+    public $id, $usuario, $senha, $recorde, $ativo;
 
     public function Save() : void
     {
